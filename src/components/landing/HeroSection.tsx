@@ -87,7 +87,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col items-center mt-10"
         >
-          <Link to="/connections">
+          <Link to="/auth">
             <Button size="lg" className="rounded-full px-8 text-base">
               Try for Free
             </Button>

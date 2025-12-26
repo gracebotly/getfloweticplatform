@@ -27,7 +27,7 @@ export const FooterSection = () => {
           <p className="text-background/70 mb-8 max-w-lg mx-auto">
             Join thousands of teams using Flowetic to unify their data and gain actionable insights.
           </p>
-          <Link to="/connections">
+          <Link to="/auth">
             <Button size="lg" variant="secondary" className="rounded-full px-8">
               Get Started Free
             </Button>

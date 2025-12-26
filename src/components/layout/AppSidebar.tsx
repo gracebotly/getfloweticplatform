@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   MessageSquare,
@@ -9,18 +8,21 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 
 const navItems = [
-  { title: "Chat", path: "/chat", icon: MessageSquare },
-  { title: "Clients", path: "/clients", icon: Users },
-  { title: "Dashboards", path: "/dashboards", icon: LayoutDashboard },
-  { title: "Connections", path: "/connections", icon: Zap },
-  { title: "Activity", path: "/activity", icon: FileText },
-  { title: "Settings", path: "/settings", icon: Settings },
+  { title: "Chat", path: "/app/chat", icon: MessageSquare },
+  { title: "Clients", path: "/app/clients", icon: Users },
+  { title: "Dashboards", path: "/app/dashboards", icon: LayoutDashboard },
+  { title: "Connections", path: "/app/connections", icon: Zap },
+  { title: "Activity", path: "/app/activity", icon: FileText },
+  { title: "Settings", path: "/app/settings", icon: Settings },
 ];
 
 interface AppSidebarProps {
@@ -30,6 +32,12 @@ interface AppSidebarProps {
 
 export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
   const location = useLocation();
+  const { user, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast.success('Signed out successfully');
+  };
 
   return (
     <aside
@@ -42,7 +50,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
       <div className="flex items-center h-14 px-4 border-b border-sidebar-border">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
-            GF
+            F
           </div>
           {!collapsed && (
             <span className="font-semibold text-sidebar-foreground">Flowetic</span>
@@ -111,7 +119,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         </div>
       )}
 
-      {/* Agency footer */}
+      {/* User footer */}
       <div className="p-3 border-t border-sidebar-border">
         <div
           className={cn(
@@ -119,17 +127,47 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
             collapsed ? "justify-center" : ""
           )}
         >
-          <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-medium">
-            AG
+          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-medium">
+            {user?.email?.charAt(0).toUpperCase() || 'U'}
           </div>
           {!collapsed && (
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-sidebar-foreground truncate">
-                Agency
+                {user?.email || 'User'}
               </p>
             </div>
           )}
+          {!collapsed && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 text-sidebar-muted hover:text-destructive"
+                  onClick={handleSignOut}
+                >
+                  <LogOut className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Sign out</TooltipContent>
+            </Tooltip>
+          )}
         </div>
+        {collapsed && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-full h-9 mt-2 text-sidebar-muted hover:text-destructive"
+                onClick={handleSignOut}
+              >
+                <LogOut className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right">Sign out</TooltipContent>
+          </Tooltip>
+        )}
       </div>
     </aside>
   );

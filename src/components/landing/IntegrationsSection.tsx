@@ -35,7 +35,7 @@ export const IntegrationsSection = () => {
               <p className="text-muted-foreground mb-8">
                 From databases to APIs to cloud services, connect all your data sources in seconds. No complex setup required.
               </p>
-              <Link to="/connections">
+              <Link to="/auth">
                 <Button className="rounded-full">Get Started Now</Button>
               </Link>
             </motion.div>
