@@ -2,8 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import Landing from "./pages/Landing";
 import Chat from "./pages/Chat";
 import Clients from "./pages/Clients";
 import Dashboards from "./pages/Dashboards";
@@ -21,8 +22,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DashboardLayout />}>
-            <Route index element={<Navigate to="/connections" replace />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/app" element={<DashboardLayout />}>
+            <Route index element={<Connections />} />
             <Route path="chat" element={<Chat />} />
             <Route path="clients" element={<Clients />} />
             <Route path="dashboards" element={<Dashboards />} />
