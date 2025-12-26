@@ -58,12 +58,12 @@ export const LandingNavbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Link to="/connections">
+            <Link to="/auth">
               <Button variant="ghost" size="sm">
                 Login
               </Button>
             </Link>
-            <Link to="/connections">
+            <Link to="/auth">
               <Button size="sm" className="rounded-full px-6">
                 Try for Free
               </Button>
@@ -100,12 +100,12 @@ export const LandingNavbar = () => {
               </a>
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t">
-              <Link to="/connections">
+              <Link to="/auth">
                 <Button variant="ghost" className="w-full">
                   Login
                 </Button>
               </Link>
-              <Link to="/connections">
+              <Link to="/auth">
                 <Button className="w-full rounded-full">Try for Free</Button>
               </Link>
             </div>

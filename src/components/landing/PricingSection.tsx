@@ -103,7 +103,7 @@ export const PricingSection = () => {
               ))}
             </ul>
 
-            <Link to="/connections" className="block">
+            <Link to="/auth" className="block">
               <Button className="w-full rounded-full" size="lg">
                 Try for Free
               </Button>
