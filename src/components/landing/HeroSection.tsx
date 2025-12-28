@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Database, BarChart3, Users, Zap } from 'lucide-react';
 import heroBackground from '@/assets/hero-background.jpg';
-import dashboardPreview from '@/assets/dashboard-preview.png';
+import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
 
 const floatingIcons = [
   { icon: Database, position: 'top-32 left-[10%]', delay: 0, color: 'bg-foreground' },
