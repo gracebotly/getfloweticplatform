@@ -103,21 +103,11 @@ export const HeroSection = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-16 relative"
         >
-          <div className="relative bg-card rounded-2xl shadow-2xl border overflow-hidden mx-auto max-w-5xl">
-            <div className="bg-muted/50 p-4 border-b flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-destructive" />
-              <div className="w-3 h-3 rounded-full bg-warning" />
-              <div className="w-3 h-3 rounded-full bg-success" />
-              <span className="ml-4 text-sm text-muted-foreground">Flowetic Dashboard</span>
-            </div>
-            <div className="p-2">
-              <img 
-                src={dashboardPreview} 
-                alt="Flowetic Dashboard Preview showing analytics charts and data visualizations" 
-                className="w-full h-auto rounded-lg"
-              />
-            </div>
-          </div>
+          <img 
+            src={dashboardPreview} 
+            alt="Flowetic Dashboard Preview showing connections and integrations" 
+            className="w-full h-auto rounded-2xl shadow-2xl border mx-auto max-w-5xl"
+          />
           {/* Gradient overlay */}
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
         </motion.div>
