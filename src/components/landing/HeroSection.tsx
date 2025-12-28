@@ -13,7 +13,7 @@ const floatingIcons = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden">
+    <section className="relative pt-32 pb-20 overflow-hidden">
       {/* Floating Icons */}
       {floatingIcons.map((item, index) => (
         <motion.div
@@ -101,15 +101,13 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-16 relative"
+          className="mt-16"
         >
           <img 
             src={dashboardPreview} 
             alt="Flowetic Dashboard Preview showing connections and integrations" 
             className="w-full h-auto rounded-2xl shadow-2xl border mx-auto max-w-5xl"
           />
-          {/* Gradient overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
         </motion.div>
       </div>
     </section>
