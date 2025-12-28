@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Database, BarChart3, Users, Zap } from 'lucide-react';
 import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
+import { useRef } from 'react';
 
 const floatingIcons = [
   { icon: Database, position: 'top-32 left-[10%]', delay: 0, color: 'bg-foreground' },
@@ -12,6 +13,16 @@ const floatingIcons = [
 ];
 
 export const HeroSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "center center"]
+  });
+
+  const rotateX = useTransform(scrollYProgress, [0, 1], [25, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
+
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
       {/* Floating Icons */}
@@ -96,19 +107,26 @@ export const HeroSection = () => {
           <p className="text-sm text-muted-foreground mt-3">No card required</p>
         </motion.div>
 
-        {/* Dashboard Preview */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="mt-16"
-        >
-          <img 
-            src={dashboardPreview} 
-            alt="Flowetic Dashboard Preview showing connections and integrations" 
-            className="w-full h-auto rounded-2xl shadow-2xl border mx-auto max-w-5xl"
-          />
-        </motion.div>
+        {/* Dashboard Preview with 3D Scroll Animation */}
+        <div ref={containerRef} className="mt-16" style={{ perspective: '1200px' }}>
+          <motion.div
+            style={{
+              rotateX,
+              scale,
+              opacity,
+              transformOrigin: 'center bottom',
+            }}
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+          >
+            <img 
+              src={dashboardPreview} 
+              alt="Flowetic Dashboard Preview showing connections and integrations" 
+              className="w-full h-auto rounded-2xl shadow-2xl border mx-auto max-w-5xl"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
