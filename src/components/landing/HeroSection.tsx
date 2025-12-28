@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Database, BarChart3, Users, Zap } from 'lucide-react';
+import heroBackground from '@/assets/hero-background.jpg';
+import dashboardPreview from '@/assets/dashboard-preview.png';
 
 const floatingIcons = [
   { icon: Database, position: 'top-32 left-[10%]', delay: 0, color: 'bg-foreground' },
@@ -13,6 +15,15 @@ const floatingIcons = [
 export const HeroSection = () => {
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden">
+      {/* Hero Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={heroBackground} 
+          alt="" 
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      </div>
       {/* Floating Icons */}
       {floatingIcons.map((item, index) => (
         <motion.div
@@ -43,7 +54,7 @@ export const HeroSection = () => {
         </motion.div>
       ))}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Trust Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -109,45 +120,12 @@ export const HeroSection = () => {
               <div className="w-3 h-3 rounded-full bg-success" />
               <span className="ml-4 text-sm text-muted-foreground">Flowetic Dashboard</span>
             </div>
-            <div className="p-6">
-              <div className="flex gap-4">
-                {/* Sidebar */}
-                <div className="hidden md:block w-48 bg-muted/30 rounded-lg p-4">
-                  <div className="text-sm font-medium text-foreground mb-4">Menu</div>
-                  <div className="space-y-2">
-                    {['Dashboards', 'Connections', 'Sources', 'Activity'].map((item, i) => (
-                      <div
-                        key={item}
-                        className={`text-sm py-2 px-3 rounded-md ${
-                          i === 1 ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'
-                        }`}
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                {/* Main Content */}
-                <div className="flex-1">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    {[
-                      { label: 'Total Sources', value: '24', change: '+12%' },
-                      { label: 'Active Connections', value: '18', change: '+8%' },
-                      { label: 'Data Synced', value: '1.2TB', change: '+24%' },
-                      { label: 'Dashboards', value: '12', change: '+3' },
-                    ].map((stat) => (
-                      <div key={stat.label} className="bg-muted/30 rounded-lg p-4">
-                        <div className="text-xs text-muted-foreground uppercase">{stat.label}</div>
-                        <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                        <div className="text-xs text-success">{stat.change}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="bg-muted/30 rounded-lg p-4 h-32 flex items-center justify-center">
-                    <div className="text-muted-foreground text-sm">Dashboard Preview</div>
-                  </div>
-                </div>
-              </div>
+            <div className="p-2">
+              <img 
+                src={dashboardPreview} 
+                alt="Flowetic Dashboard Preview showing analytics charts and data visualizations" 
+                className="w-full h-auto rounded-lg"
+              />
             </div>
           </div>
           {/* Gradient overlay */}
