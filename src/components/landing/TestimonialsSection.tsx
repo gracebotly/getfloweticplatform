@@ -66,7 +66,7 @@ export const TestimonialsSection = () => {
         </motion.div>
 
         {/* Testimonials Marquee */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           {/* Gradient fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
