@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Database, BarChart3, Users, Zap } from 'lucide-react';
-import heroBackground from '@/assets/hero-background.jpg';
 import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
 
 const floatingIcons = [
@@ -15,15 +14,6 @@ const floatingIcons = [
 export const HeroSection = () => {
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden">
-      {/* Hero Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={heroBackground} 
-          alt="" 
-          className="w-full h-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
-      </div>
       {/* Floating Icons */}
       {floatingIcons.map((item, index) => (
         <motion.div
