@@ -1,15 +1,20 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Database, BarChart3, Users, Zap } from 'lucide-react';
 import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
 import { useRef } from 'react';
 
-const floatingIcons = [
-  { icon: Database, position: 'top-32 left-[10%]', delay: 0, color: 'bg-foreground' },
-  { icon: BarChart3, position: 'top-24 right-[10%]', delay: 0.2, color: 'bg-destructive' },
-  { icon: Users, position: 'top-72 left-[5%]', delay: 0.4, color: 'bg-primary' },
-  { icon: Zap, position: 'top-64 right-[8%]', delay: 0.6, color: 'bg-purple-500' },
+// Import platform logos
+import postgresqlLogo from '@/assets/logos/postgresql.svg';
+import mongodbLogo from '@/assets/logos/mongodb.svg';
+import googleCloudLogo from '@/assets/logos/google-cloud.svg';
+import slackLogo from '@/assets/logos/slack.svg';
+
+const floatingLogos = [
+  { logo: postgresqlLogo, name: 'PostgreSQL', position: 'top-32 left-[10%]', delay: 0 },
+  { logo: googleCloudLogo, name: 'Google Cloud', position: 'top-24 right-[10%]', delay: 0.2 },
+  { logo: mongodbLogo, name: 'MongoDB', position: 'top-72 left-[5%]', delay: 0.4 },
+  { logo: slackLogo, name: 'Slack', position: 'top-64 right-[8%]', delay: 0.6 },
 ];
 
 export const HeroSection = () => {
@@ -25,8 +30,8 @@ export const HeroSection = () => {
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
-      {/* Floating Icons */}
-      {floatingIcons.map((item, index) => (
+      {/* Floating Brand Logos */}
+      {floatingLogos.map((item, index) => (
         <motion.div
           key={index}
           initial={{ opacity: 0, scale: 0.5, y: 50 }}
@@ -48,9 +53,9 @@ export const HeroSection = () => {
               delay: item.delay,
               ease: 'easeInOut',
             }}
-            className={`${item.color} p-4 rounded-2xl shadow-xl`}
+            className="bg-card p-4 rounded-2xl shadow-xl border"
           >
-            <item.icon className="w-8 h-8 text-white" />
+            <img src={item.logo} alt={item.name} className="w-10 h-10" />
           </motion.div>
         </motion.div>
       ))}

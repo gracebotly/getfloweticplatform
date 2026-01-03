@@ -3,19 +3,33 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
+// Import platform logos
+import postgresqlLogo from '@/assets/logos/postgresql.svg';
+import mysqlLogo from '@/assets/logos/mysql.svg';
+import mongodbLogo from '@/assets/logos/mongodb.svg';
+import googleCloudLogo from '@/assets/logos/google-cloud.svg';
+import awsLogo from '@/assets/logos/aws.svg';
+import redisLogo from '@/assets/logos/redis.svg';
+import slackLogo from '@/assets/logos/slack.svg';
+import stripeLogo from '@/assets/logos/stripe.svg';
+import snowflakeLogo from '@/assets/logos/snowflake.svg';
+import salesforceLogo from '@/assets/logos/salesforce.svg';
+import hubspotLogo from '@/assets/logos/hubspot.svg';
+import tableauLogo from '@/assets/logos/tableau.svg';
+
 const integrations = [
-  { name: 'PostgreSQL', color: 'bg-blue-500', letter: 'P' },
-  { name: 'MySQL', color: 'bg-orange-500', letter: 'M' },
-  { name: 'MongoDB', color: 'bg-green-600', letter: 'M' },
-  { name: 'Stripe', color: 'bg-purple-500', letter: 'S' },
-  { name: 'Google Analytics', color: 'bg-amber-500', letter: 'G' },
-  { name: 'AWS', color: 'bg-orange-600', letter: 'A' },
-  { name: 'Salesforce', color: 'bg-sky-500', letter: 'S' },
-  { name: 'HubSpot', color: 'bg-orange-500', letter: 'H' },
-  { name: 'Snowflake', color: 'bg-cyan-500', letter: 'S' },
-  { name: 'BigQuery', color: 'bg-blue-600', letter: 'B' },
-  { name: 'Tableau', color: 'bg-indigo-500', letter: 'T' },
-  { name: 'Slack', color: 'bg-purple-600', letter: 'S' },
+  { name: 'PostgreSQL', logo: postgresqlLogo },
+  { name: 'MySQL', logo: mysqlLogo },
+  { name: 'MongoDB', logo: mongodbLogo },
+  { name: 'Stripe', logo: stripeLogo },
+  { name: 'Google Cloud', logo: googleCloudLogo },
+  { name: 'AWS', logo: awsLogo },
+  { name: 'Salesforce', logo: salesforceLogo },
+  { name: 'HubSpot', logo: hubspotLogo },
+  { name: 'Snowflake', logo: snowflakeLogo },
+  { name: 'Redis', logo: redisLogo },
+  { name: 'Tableau', logo: tableauLogo },
+  { name: 'Slack', logo: slackLogo },
 ];
 
 const duplicatedIntegrations = [...integrations, ...integrations];
@@ -48,7 +62,7 @@ export const IntegrationsSection = () => {
               </Link>
             </motion.div>
 
-            {/* Right - Vertical Marquee */}
+            {/* Right - Vertical Marquee with Real Logos */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -68,11 +82,13 @@ export const IntegrationsSection = () => {
                     key={`${integration.name}-${index}`}
                     className="flex items-center gap-4 bg-card rounded-xl px-4 py-3 border shadow-sm"
                   >
-                    {/* Icon */}
-                    <div className={`${integration.color} w-10 h-10 rounded-lg flex items-center justify-center shrink-0`}>
-                      <span className="text-white font-bold text-sm">
-                        {integration.letter}
-                      </span>
+                    {/* Logo */}
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-background p-1.5">
+                      <img 
+                        src={integration.logo} 
+                        alt={integration.name} 
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     
                     {/* Name */}
