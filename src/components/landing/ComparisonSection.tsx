@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { X, Check } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
 
 const otherToolsPainPoints = [
   "Time wasted on manual data entry",
@@ -41,13 +40,12 @@ export const ComparisonSection = () => {
           </p>
         </motion.div>
 
-        {/* Comparison Card with Phone Mockup */}
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-5 gap-8 items-center">
+        {/* Comparison Card */}
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-3"
           >
             <Card className="overflow-hidden shadow-xl">
               <div className="grid md:grid-cols-2">
@@ -98,33 +96,6 @@ export const ComparisonSection = () => {
                 </div>
               </div>
             </Card>
-          </motion.div>
-
-          {/* Phone Mockup */}
-          <motion.div
-            initial={{ opacity: 0, x: 50, rotateY: -15 }}
-            animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: 50, rotateY: -15 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:col-span-2 hidden lg:flex justify-center"
-            style={{ perspective: '1000px' }}
-          >
-            <div className="relative">
-              {/* Phone Frame */}
-              <div className="bg-foreground rounded-[3rem] p-3 shadow-2xl">
-                <div className="bg-background rounded-[2.5rem] overflow-hidden w-64 h-[520px] relative">
-                  {/* Phone Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-foreground rounded-b-2xl z-10" />
-                  {/* Screen Content */}
-                  <img 
-                    src={dashboardPreview} 
-                    alt="Flowetic App" 
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-              </div>
-              {/* Decorative glow */}
-              <div className="absolute -inset-4 bg-primary/20 rounded-[4rem] blur-2xl -z-10" />
-            </div>
           </motion.div>
         </div>
       </div>
