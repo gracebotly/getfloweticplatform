@@ -9,6 +9,7 @@ const features = [
     description: 'Connect all your databases, APIs, and services in one place. Manage everything from a single dashboard.',
     color: 'bg-amber-50 dark:bg-amber-950',
     iconBg: 'bg-amber-500',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
   },
   {
     icon: Sparkles,
@@ -16,6 +17,7 @@ const features = [
     description: 'Describe what you want in plain English and let our AI build dashboards and reports automatically.',
     color: 'bg-blue-50 dark:bg-blue-950',
     iconBg: 'bg-blue-500',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
   },
   {
     icon: Mail,
@@ -23,6 +25,7 @@ const features = [
     description: 'Set up email or Slack notifications for your metrics. Never miss critical changes in your data.',
     color: 'bg-green-50 dark:bg-green-950',
     iconBg: 'bg-green-500',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop',
   },
   {
     icon: CreditCard,
@@ -30,6 +33,7 @@ const features = [
     description: 'Share dashboards with clients and teammates. Control access with simple permission settings.',
     color: 'bg-purple-50 dark:bg-purple-950',
     iconBg: 'bg-purple-500',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
   },
 ];
 
@@ -67,14 +71,20 @@ export const FeaturesSection = () => {
               className={`${feature.color} rounded-2xl p-8 border`}
             >
               <div className="flex flex-col h-full">
-                <div className="mb-6">
-                  <div className="h-40 bg-card/60 rounded-xl flex items-center justify-center border">
-                    <div className={`${feature.iconBg} p-4 rounded-xl`}>
-                      <feature.icon className="w-8 h-8 text-white" />
-                    </div>
+                <div className="mb-6 relative">
+                  <div className="h-40 rounded-xl overflow-hidden border">
+                    <img 
+                      src={feature.image} 
+                      alt={feature.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  </div>
+                  <div className={`${feature.iconBg} p-3 rounded-xl absolute -bottom-4 left-4 shadow-lg`}>
+                    <feature.icon className="w-6 h-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl font-semibold text-foreground mb-2 mt-4">
                   {feature.title}
                 </h3>
                 <p className="text-muted-foreground">{feature.description}</p>

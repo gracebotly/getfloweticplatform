@@ -8,18 +8,21 @@ const steps = [
     icon: UserPlus,
     title: 'Create Free Account',
     description: 'Add your details and preferences in under 2 minutes.',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop',
   },
   {
     number: 2,
     icon: Database,
     title: 'Connect Your Data',
     description: 'Link databases, APIs, or upload files with a few clicks.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
   },
   {
     number: 3,
     icon: Share2,
     title: 'Share & Analyze',
     description: 'Build dashboards and share insights with your team.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
   },
 ];
 
@@ -58,9 +61,15 @@ export const StepsSection = () => {
                 {step.number}. {step.title}
               </div>
               <p className="text-muted-foreground mb-6">{step.description}</p>
-              <div className="h-48 bg-muted/50 rounded-xl flex items-center justify-center">
-                <div className="bg-primary/10 p-4 rounded-xl">
-                  <step.icon className="w-10 h-10 text-primary" />
+              <div className="h-48 rounded-xl overflow-hidden relative">
+                <img 
+                  src={step.image} 
+                  alt={step.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute bottom-4 left-4 bg-primary/90 p-3 rounded-xl">
+                  <step.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
               </div>
             </motion.div>

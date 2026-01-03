@@ -65,9 +65,21 @@ export const HeroSection = () => {
         >
           <div className="flex items-center gap-2 bg-secondary rounded-full px-4 py-2">
             <div className="flex -space-x-2">
-              <div className="w-6 h-6 rounded-full bg-primary" />
-              <div className="w-6 h-6 rounded-full bg-destructive" />
-              <div className="w-6 h-6 rounded-full bg-warning" />
+              <img 
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" 
+                alt="User" 
+                className="w-6 h-6 rounded-full border-2 border-background object-cover"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
+                alt="User" 
+                className="w-6 h-6 rounded-full border-2 border-background object-cover"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
+                alt="User" 
+                className="w-6 h-6 rounded-full border-2 border-background object-cover"
+              />
             </div>
             <span className="text-sm font-medium text-foreground">
               Trusted by 500+ data teams
