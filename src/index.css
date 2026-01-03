@@ -141,4 +141,17 @@
       transform: translateX(-50%);
     }
   }
+
+  .animate-marquee-vertical {
+    animation: marquee-vertical 20s linear infinite;
+  }
+
+  @keyframes marquee-vertical {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
 }

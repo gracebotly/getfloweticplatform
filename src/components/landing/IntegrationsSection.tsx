@@ -2,16 +2,23 @@ import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import integrationsVisual from '@/assets/integrations-visual.png';
 
 const integrations = [
-  { name: 'PostgreSQL', color: 'bg-blue-500' },
-  { name: 'MySQL', color: 'bg-orange-500' },
-  { name: 'Stripe', color: 'bg-purple-500' },
-  { name: 'Google', color: 'bg-red-500' },
-  { name: 'AWS', color: 'bg-amber-500' },
-  { name: 'MongoDB', color: 'bg-green-500' },
+  { name: 'PostgreSQL', color: 'bg-blue-500', letter: 'P' },
+  { name: 'MySQL', color: 'bg-orange-500', letter: 'M' },
+  { name: 'MongoDB', color: 'bg-green-600', letter: 'M' },
+  { name: 'Stripe', color: 'bg-purple-500', letter: 'S' },
+  { name: 'Google Analytics', color: 'bg-amber-500', letter: 'G' },
+  { name: 'AWS', color: 'bg-orange-600', letter: 'A' },
+  { name: 'Salesforce', color: 'bg-sky-500', letter: 'S' },
+  { name: 'HubSpot', color: 'bg-orange-500', letter: 'H' },
+  { name: 'Snowflake', color: 'bg-cyan-500', letter: 'S' },
+  { name: 'BigQuery', color: 'bg-blue-600', letter: 'B' },
+  { name: 'Tableau', color: 'bg-indigo-500', letter: 'T' },
+  { name: 'Slack', color: 'bg-purple-600', letter: 'S' },
 ];
+
+const duplicatedIntegrations = [...integrations, ...integrations];
 
 export const IntegrationsSection = () => {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.2 });
@@ -41,35 +48,41 @@ export const IntegrationsSection = () => {
               </Link>
             </motion.div>
 
-            {/* Right - Visual */}
+            {/* Right - Vertical Marquee */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative h-[400px] overflow-hidden"
             >
-              <img 
-                src={integrationsVisual} 
-                alt="Connected data platforms and integrations visualization" 
-                className="w-full h-auto"
-              />
-              {/* Floating integration badges */}
-              <div className="absolute top-4 right-4 flex flex-wrap gap-2 max-w-[200px]">
-                {integrations.slice(0, 3).map((integration, index) => (
-                  <motion.div
-                    key={integration.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 0.4 + 0.1 * index }}
-                    className="flex items-center gap-2 bg-card/90 backdrop-blur-sm rounded-full px-3 py-1.5 border shadow-lg"
+              {/* Top gradient fade */}
+              <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-muted/30 to-transparent z-10 pointer-events-none" />
+              
+              {/* Bottom gradient fade */}
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-muted/30 to-transparent z-10 pointer-events-none" />
+              
+              {/* Scrolling container */}
+              <div className="animate-marquee-vertical hover:[animation-play-state:paused] flex flex-col gap-3">
+                {duplicatedIntegrations.map((integration, index) => (
+                  <div
+                    key={`${integration.name}-${index}`}
+                    className="flex items-center gap-4 bg-card rounded-xl px-4 py-3 border shadow-sm"
                   >
-                    <div className={`${integration.color} w-5 h-5 rounded-full flex items-center justify-center`}>
-                      <span className="text-white font-bold text-[10px]">
-                        {integration.name.charAt(0)}
+                    {/* Icon */}
+                    <div className={`${integration.color} w-10 h-10 rounded-lg flex items-center justify-center shrink-0`}>
+                      <span className="text-white font-bold text-sm">
+                        {integration.letter}
                       </span>
                     </div>
-                    <span className="text-xs font-medium text-foreground">{integration.name}</span>
-                  </motion.div>
+                    
+                    {/* Name */}
+                    <span className="text-foreground font-medium flex-1">
+                      {integration.name}
+                    </span>
+                    
+                    {/* Accent dot */}
+                    <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                  </div>
                 ))}
               </div>
             </motion.div>
