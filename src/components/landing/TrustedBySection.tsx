@@ -1,19 +1,41 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
+import postgresqlLogo from '@/assets/logos/postgresql.svg';
+import mysqlLogo from '@/assets/logos/mysql.svg';
+import mongodbLogo from '@/assets/logos/mongodb.svg';
+import googleCloudLogo from '@/assets/logos/google-cloud.svg';
+import awsLogo from '@/assets/logos/aws.svg';
+import redisLogo from '@/assets/logos/redis.svg';
+import slackLogo from '@/assets/logos/slack.svg';
+import stripeLogo from '@/assets/logos/stripe.svg';
+import snowflakeLogo from '@/assets/logos/snowflake.svg';
+import salesforceLogo from '@/assets/logos/salesforce.svg';
+import hubspotLogo from '@/assets/logos/hubspot.svg';
+import tableauLogo from '@/assets/logos/tableau.svg';
+
 const logos = [
-  { name: 'Acme Corp', width: 'w-24' },
-  { name: 'Startup Inc', width: 'w-28' },
-  { name: 'Tech Co', width: 'w-20' },
-  { name: 'Data Labs', width: 'w-24' },
-  { name: 'Cloud Nine', width: 'w-28' },
+  { name: 'PostgreSQL', logo: postgresqlLogo },
+  { name: 'MySQL', logo: mysqlLogo },
+  { name: 'MongoDB', logo: mongodbLogo },
+  { name: 'Google Cloud', logo: googleCloudLogo },
+  { name: 'AWS', logo: awsLogo },
+  { name: 'Redis', logo: redisLogo },
+  { name: 'Slack', logo: slackLogo },
+  { name: 'Stripe', logo: stripeLogo },
+  { name: 'Snowflake', logo: snowflakeLogo },
+  { name: 'Salesforce', logo: salesforceLogo },
+  { name: 'HubSpot', logo: hubspotLogo },
+  { name: 'Tableau', logo: tableauLogo },
 ];
+
+const duplicatedLogos = [...logos, ...logos];
 
 export const TrustedBySection = () => {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.3 });
 
   return (
-    <section ref={ref} className="py-16 bg-background">
+    <section ref={ref} className="py-16 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -23,26 +45,36 @@ export const TrustedBySection = () => {
         >
           Built for freelancers, consultants, and small businesses.
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-16"
-        >
-          {logos.map((logo, index) => (
-            <motion.div
-              key={logo.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 * index }}
-              className={`${logo.width} h-10 bg-muted rounded flex items-center justify-center`}
-            >
-              <span className="text-muted-foreground font-semibold text-sm">{logo.name}</span>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="relative"
+      >
+        {/* Gradient fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        {/* Marquee container */}
+        <div className="flex overflow-hidden hover:[animation-play-state:paused] group">
+          <div className="flex animate-marquee gap-16 items-center group-hover:[animation-play-state:paused]">
+            {duplicatedLogos.map((logo, index) => (
+              <div
+                key={`${logo.name}-${index}`}
+                className="flex-shrink-0 px-4"
+              >
+                <img
+                  src={logo.logo}
+                  alt={logo.name}
+                  className="h-8 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 };
