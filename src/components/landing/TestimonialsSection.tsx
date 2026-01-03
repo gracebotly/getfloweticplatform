@@ -6,37 +6,37 @@ const testimonials = [
   {
     name: 'Sarah Chen',
     role: 'Product Manager',
-    avatar: 'SC',
+    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face',
     content: 'Before Flowetic I spent hours compiling reports from different sources. Now I have everything in one place and can focus on actual analysis.',
   },
   {
     name: 'Marcus Johnson',
     role: 'Data Analyst',
-    avatar: 'MJ',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
     content: 'The AI-powered dashboards are incredible. I describe what I need, and Flowetic builds it for me. My productivity has tripled.',
   },
   {
     name: 'Elena Rodriguez',
     role: 'Startup Founder',
-    avatar: 'ER',
+    avatarUrl: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&h=200&fit=crop&crop=face',
     content: 'Setting up data pipelines used to take my team weeks. With Flowetic, we connected all our sources in a single afternoon.',
   },
   {
     name: 'David Park',
     role: 'Operations Lead',
-    avatar: 'DP',
+    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
     content: 'The automated alerts have been a game-changer. We catch issues before they become problems, and our response time has improved dramatically.',
   },
   {
     name: 'Alex Thompson',
     role: 'Marketing Director',
-    avatar: 'AT',
+    avatarUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
     content: 'Finally, a tool that makes data accessible to non-technical users. Our marketing team now makes data-driven decisions without waiting on engineering.',
   },
   {
     name: 'Lisa Wang',
     role: 'Finance Manager',
-    avatar: 'LW',
+    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face',
     content: 'The real-time sync across all our financial tools has eliminated manual reconciliation. We save 20+ hours every month.',
   },
 ];
@@ -87,12 +87,12 @@ export const TestimonialsSection = () => {
                   <p className="text-muted-foreground flex-1 mb-6">
                     "{testimonial.content}"
                   </p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                      <span className="text-primary-foreground font-semibold">
-                        {testimonial.avatar}
-                      </span>
-                    </div>
+                    <div className="flex items-center gap-4">
+                    <img 
+                      src={testimonial.avatarUrl} 
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
                     <div>
                       <div className="font-semibold text-foreground">{testimonial.name}</div>
                       <div className="text-sm text-muted-foreground">{testimonial.role}</div>
