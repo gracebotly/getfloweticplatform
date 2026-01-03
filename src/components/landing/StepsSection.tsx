@@ -8,7 +8,7 @@ const steps = [
     icon: UserPlus,
     title: 'Create Free Account',
     description: 'Add your details and preferences in under 2 minutes.',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop',
   },
   {
     number: 2,
