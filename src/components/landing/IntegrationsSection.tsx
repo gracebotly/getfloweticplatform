@@ -32,7 +32,21 @@ const integrations = [
   { name: 'Slack', logo: slackLogo },
 ];
 
-const duplicatedIntegrations = [...integrations, ...integrations];
+const IntegrationCard = ({ integration }: { integration: typeof integrations[0] }) => (
+  <div className="flex items-center gap-4 bg-card rounded-xl px-4 py-3 border shadow-sm">
+    <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-background p-1.5">
+      <img 
+        src={integration.logo} 
+        alt={integration.name} 
+        className="w-full h-full object-contain"
+      />
+    </div>
+    <span className="text-foreground font-medium flex-1">
+      {integration.name}
+    </span>
+    <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
+  </div>
+);
 
 export const IntegrationsSection = () => {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.2 });
@@ -76,30 +90,17 @@ export const IntegrationsSection = () => {
               <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-muted/30 to-transparent z-10 pointer-events-none" />
               
               {/* Scrolling container */}
-              <div className="animate-marquee-vertical hover:[animation-play-state:paused] flex flex-col gap-3">
-                {duplicatedIntegrations.map((integration, index) => (
-                  <div
-                    key={`${integration.name}-${index}`}
-                    className="flex items-center gap-4 bg-card rounded-xl px-4 py-3 border shadow-sm"
-                  >
-                    {/* Logo */}
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-background p-1.5">
-                      <img 
-                        src={integration.logo} 
-                        alt={integration.name} 
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    
-                    {/* Name */}
-                    <span className="text-foreground font-medium flex-1">
-                      {integration.name}
-                    </span>
-                    
-                    {/* Accent dot */}
-                    <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
-                  </div>
-                ))}
+              <div className="flex flex-col group">
+                <div className="flex flex-col gap-3 animate-marquee-vertical group-hover:[animation-play-state:paused]">
+                  {integrations.map((integration) => (
+                    <IntegrationCard key={integration.name} integration={integration} />
+                  ))}
+                </div>
+                <div className="flex flex-col gap-3 animate-marquee-vertical group-hover:[animation-play-state:paused]" aria-hidden="true">
+                  {integrations.map((integration) => (
+                    <IntegrationCard key={integration.name} integration={integration} />
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
