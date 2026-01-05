@@ -29,7 +29,7 @@ const logos = [
   { name: 'Tableau', logo: tableauLogo },
 ];
 
-const duplicatedLogos = [...logos, ...logos];
+
 
 export const TrustedBySection = () => {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.3 });
@@ -58,13 +58,21 @@ export const TrustedBySection = () => {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         {/* Marquee container */}
-        <div className="flex overflow-hidden hover:[animation-play-state:paused] group">
+        <div className="flex overflow-hidden group">
           <div className="flex animate-marquee gap-16 items-center group-hover:[animation-play-state:paused]">
-            {duplicatedLogos.map((logo, index) => (
-              <div
-                key={`${logo.name}-${index}`}
-                className="flex-shrink-0 px-4"
-              >
+            {logos.map((logo) => (
+              <div key={logo.name} className="flex-shrink-0 px-4">
+                <img
+                  src={logo.logo}
+                  alt={logo.name}
+                  className="h-8 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="flex animate-marquee gap-16 items-center group-hover:[animation-play-state:paused]" aria-hidden="true">
+            {logos.map((logo) => (
+              <div key={logo.name} className="flex-shrink-0 px-4">
                 <img
                   src={logo.logo}
                   alt={logo.name}

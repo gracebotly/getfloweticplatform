@@ -41,11 +41,35 @@ const testimonials = [
   },
 ];
 
+const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
+  <div className="flex-shrink-0 w-80 md:w-96">
+    <div className="bg-card rounded-2xl p-6 border h-full flex flex-col">
+      <Quote className="w-8 h-8 text-primary/30 mb-4" />
+      <p className="text-muted-foreground flex-1 mb-6">
+        "{testimonial.content}"
+      </p>
+      <div className="flex items-center gap-4">
+        <img 
+          src={testimonial.avatarUrl} 
+          alt={testimonial.name}
+          className="w-12 h-12 rounded-full object-cover"
+        />
+        <div>
+          <div className="font-semibold text-foreground">{testimonial.name}</div>
+          <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+          <div className="flex mt-1">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-4 h-4 text-warning fill-warning" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 export const TestimonialsSection = () => {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.1 });
-
-  // Duplicate testimonials for seamless loop
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section ref={ref} className="py-24 bg-muted/30 overflow-hidden">
@@ -75,37 +99,18 @@ export const TestimonialsSection = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
-            className="flex gap-6 animate-marquee hover:[animation-play-state:paused]"
+            className="flex group"
           >
-            {duplicatedTestimonials.map((testimonial, index) => (
-              <div
-                key={`${testimonial.name}-${index}`}
-                className="flex-shrink-0 w-80 md:w-96"
-              >
-                <div className="bg-card rounded-2xl p-6 border h-full flex flex-col">
-                  <Quote className="w-8 h-8 text-primary/30 mb-4" />
-                  <p className="text-muted-foreground flex-1 mb-6">
-                    "{testimonial.content}"
-                  </p>
-                    <div className="flex items-center gap-4">
-                    <img 
-                      src={testimonial.avatarUrl} 
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <div className="font-semibold text-foreground">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                      <div className="flex mt-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-warning fill-warning" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <div className="flex gap-6 animate-marquee group-hover:[animation-play-state:paused]">
+              {testimonials.map((testimonial) => (
+                <TestimonialCard key={testimonial.name} testimonial={testimonial} />
+              ))}
+            </div>
+            <div className="flex gap-6 animate-marquee group-hover:[animation-play-state:paused]" aria-hidden="true">
+              {testimonials.map((testimonial) => (
+                <TestimonialCard key={testimonial.name} testimonial={testimonial} />
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
