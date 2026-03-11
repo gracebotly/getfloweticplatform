@@ -1,150 +1,146 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
-import { useRef } from 'react';
+"use client"
 
-// Import platform logos
-import postgresqlLogo from '@/assets/logos/postgresql.svg';
-import mongodbLogo from '@/assets/logos/mongodb.svg';
-import googleCloudLogo from '@/assets/logos/google-cloud.svg';
-import slackLogo from '@/assets/logos/slack.svg';
+import { useEffect, useRef } from "react"
+import Link from "next/link"
 
-const floatingLogos = [
-  { logo: postgresqlLogo, name: 'PostgreSQL', position: 'top-32 left-[10%]', delay: 0 },
-  { logo: googleCloudLogo, name: 'Google Cloud', position: 'top-24 right-[10%]', delay: 0.2 },
-  { logo: mongodbLogo, name: 'MongoDB', position: 'top-72 left-[5%]', delay: 0.4 },
-  { logo: slackLogo, name: 'Slack', position: 'top-64 right-[8%]', delay: 0.6 },
-];
+export function HeroSection() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
-export const HeroSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "center center"]
-  });
+  // Subtle animated grid in background
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
 
-  const rotateX = useTransform(scrollYProgress, [0, 1], [25, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
+    const resize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
+    resize()
+    window.addEventListener("resize", resize)
+
+    let frame = 0
+    let raf: number
+
+    const draw = () => {
+      const { width, height } = canvas
+      ctx.clearRect(0, 0, width, height)
+      ctx.strokeStyle = "rgba(99, 179, 255, 0.08)"
+      ctx.lineWidth = 1
+
+      const gridSize = 60
+      const offset = (frame * 0.3) % gridSize
+
+      for (let x = -gridSize + (offset % gridSize); x < width + gridSize; x += gridSize) {
+        ctx.beginPath()
+        ctx.moveTo(x, 0)
+        ctx.lineTo(x, height)
+        ctx.stroke()
+      }
+      for (let y = -gridSize + (offset % gridSize); y < height + gridSize; y += gridSize) {
+        ctx.beginPath()
+        ctx.moveTo(0, y)
+        ctx.lineTo(width, y)
+        ctx.stroke()
+      }
+      frame++
+      raf = requestAnimationFrame(draw)
+    }
+
+    draw()
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener("resize", resize)
+    }
+  }, [])
 
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
-      {/* Floating Brand Logos */}
-      {floatingLogos.map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0.5, y: 50 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: item.delay + 0.5,
-            ease: 'easeOut',
-          }}
-          className={`absolute ${item.position} hidden lg:flex`}
-        >
-          <motion.div
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              delay: item.delay,
-              ease: 'easeInOut',
-            }}
-            className="bg-card p-4 rounded-2xl shadow-xl border"
-          >
-            <img src={item.logo} alt={item.name} className="w-10 h-10" />
-          </motion.div>
-        </motion.div>
-      ))}
+    <section className="relative min-h-screen bg-[#0d1117] flex flex-col justify-center overflow-hidden pt-16">
+      {/* Animated grid */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        aria-hidden="true"
+      />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Trust Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center mb-6"
-        >
-          <div className="flex items-center gap-2 bg-secondary rounded-full px-4 py-2">
-            <div className="flex -space-x-2">
-              <img 
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-            </div>
-            <span className="text-sm font-medium text-foreground">
-              Trusted by 500+ data teams
-            </span>
-          </div>
-        </motion.div>
+      {/* Blue glow orb */}
+      <div
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(59,130,246,0.15) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 text-center">
+        {/* Trust badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/70 text-sm mb-8">
+          <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          Trusted by 10 AI automation agencies
+        </div>
 
         {/* Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center"
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-            Unified Data Control.
-            <br />
-            <span className="text-primary">Smarter Insights.</span>
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Connect all your data sources, build powerful dashboards, and get actionable insights—all in one place.
-          </p>
-        </motion.div>
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight max-w-5xl mx-auto">
+          White-label your AI workflows. <span className="text-blue-400">Get paid.</span>
+        </h1>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col items-center mt-10"
-        >
-          <Link to="/auth">
-            <Button size="lg" className="rounded-full px-8 text-base">
-              Try for Free
-            </Button>
-          </Link>
-          <p className="text-sm text-muted-foreground mt-3">No card required</p>
-        </motion.div>
+        {/* Subheadline */}
+        <p className="mt-6 text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
+          Connect Vapi, Retell, Make, or n8n. In 60 seconds, your client gets a branded portal with their
+          data — under your name, your logo, your domain. Zero Getflowetic branding.
+        </p>
 
-        {/* Dashboard Preview with 3D Scroll Animation */}
-        <div ref={containerRef} className="mt-16" style={{ perspective: '1200px' }}>
-          <motion.div
-            style={{
-              rotateX,
-              scale,
-              opacity,
-              transformOrigin: 'center bottom',
-            }}
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
+        {/* Brand promise callout */}
+        <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white/70">
+          <svg className="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <span>
+            During your trial, clients see Getflowetic. <strong className="text-white font-semibold">The moment you pay, it&apos;s 100% yours.</strong>
+          </span>
+        </div>
+
+        {/* CTAs */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/signup"
+            className="inline-flex items-center px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-base transition-colors shadow-lg shadow-blue-600/20"
           >
-            <img 
-              src={dashboardPreview} 
-              alt="Flowetic Dashboard Preview showing connections and integrations" 
-              className="w-full h-auto rounded-2xl shadow-2xl border mx-auto max-w-5xl"
-            />
-          </motion.div>
+            Start free — 7 days, no card
+            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
+          <Link
+            href="/login"
+            className="inline-flex items-center px-7 py-3.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-white font-medium text-base transition-colors"
+          >
+            Sign in
+          </Link>
+        </div>
+
+        {/* Platform logos row */}
+        <div className="mt-14 flex items-center justify-center gap-8 flex-wrap">
+          <span className="text-white/30 text-sm uppercase tracking-widest font-medium">Works with</span>
+          {["Vapi", "Retell", "Make", "n8n"].map((platform) => (
+            <span
+              key={platform}
+              className="px-4 py-1.5 rounded-lg border border-white/10 bg-white/5 text-white/60 text-sm font-medium"
+            >
+              {platform}
+            </span>
+          ))}
         </div>
       </div>
+
+      {/* Bottom gradient fade to white */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #ffffff)" }}
+        aria-hidden="true"
+      />
     </section>
-  );
-};
+  )
+}

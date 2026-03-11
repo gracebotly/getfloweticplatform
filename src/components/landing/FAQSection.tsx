@@ -1,77 +1,77 @@
-import { motion } from 'framer-motion';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+"use client"
 
-const faqs = [
-  {
-    question: 'How does the free trial work?',
-    answer: 'You get full access to all features for 14 days. No credit card required. After the trial, you can choose to subscribe or your account will be downgraded to the free tier with limited features.',
-  },
-  {
-    question: 'What data sources can I connect?',
-    answer: 'Flowetic supports all major databases (PostgreSQL, MySQL, MongoDB), cloud services (AWS, GCP, Azure), SaaS tools (Stripe, HubSpot, Salesforce), and custom APIs. We\'re adding new integrations weekly.',
-  },
-  {
-    question: 'Is my data secure?',
-    answer: 'Absolutely. We use bank-level encryption for all data in transit and at rest. We\'re SOC 2 Type II compliant and never store your raw data—only the aggregated metrics you choose to track.',
-  },
-  {
-    question: 'Can I cancel anytime?',
-    answer: 'Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Your access continues until the end of your billing period.',
-  },
-  {
-    question: 'Do you offer team plans?',
-    answer: 'Yes! The Pro plan includes up to 5 team members. For larger teams, contact us for enterprise pricing with custom limits and features.',
-  },
-];
+import { useState } from "react"
 
-export const FAQSection = () => {
-  const { ref, isInView } = useScrollAnimation({ threshold: 0.2 });
+const FAQS = [
+  {
+    q: "What platforms does Getflowetic connect to?",
+    a: "Vapi, Retell AI, Make, and n8n — the four platforms most AI automation agencies are already using. You connect via API key (Vapi, Retell, Make) or instance URL + API key (n8n). More integrations are planned.",
+  },
+  {
+    q: "Do my clients need to know about Vapi or n8n?",
+    a: "No. Your clients only ever see the portal you share with them. The underlying platform — Vapi, Retell, Make, n8n — is never mentioned. They see your logo, your colors, and your domain. Not a hint of the underlying tech.",
+  },
+  {
+    q: "What does 'white-label' actually mean here?",
+    a: "Every client-facing page is branded to you. Your logo, your primary color, your welcome message, your footer, and your custom domain. On all paid plans, the portal URL is your domain — not getflowetic.com. During the free trial, clients see Getflowetic branding. The moment you subscribe, it's 100% yours.",
+  },
+  {
+    q: "How does Stripe Connect work?",
+    a: "You connect your Stripe account in Settings. When you create a Stripe-gated portal, your clients pay you directly through Stripe. Getflowetic automatically collects a small platform fee (5% on Starter, 2% on Pro) from each transaction. You receive the rest. Tax forms are handled by Stripe.",
+  },
+  {
+    q: "How many client portals do I get?",
+    a: "Starter includes 5 client portals. Pro includes 15. Each portal is a separate branded dashboard for a separate client — you can have a different look, different data source, and different access type for each one.",
+  },
+  {
+    q: "What's the difference between a magic link and a Stripe-gated portal?",
+    a: "Magic link portals are free-access — you send your client a link and they can view their dashboard with no payment required. Stripe-gated portals require payment before access. You can have both types across your portals — some free, some paid.",
+  },
+  {
+    q: "Can I cancel anytime?",
+    a: "Yes. No long-term contracts, no cancellation fees. Your subscription continues until the end of the billing period. We're confident you'll stay because your clients will ask you to.",
+  },
+]
+
+export function FAQSection() {
+  const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" ref={ref} className="py-24 bg-muted/30">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Frequently Asked Questions
+    <section id="faq" className="bg-white py-24">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+            Questions agencies actually ask
           </h2>
-        </motion.div>
+        </div>
 
-        {/* FAQ Accordion */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="bg-card border rounded-xl px-6"
+        <div className="space-y-3">
+          {FAQS.map((faq, i) => (
+            <div key={i} className="border border-gray-200 rounded-xl overflow-hidden">
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between px-6 py-4 text-left"
               >
-                <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+                <span className="font-medium text-gray-900 text-sm">{faq.q}</span>
+                <svg
+                  className={`w-4 h-4 text-gray-400 shrink-0 ml-4 transition-transform ${open === i ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {open === i && (
+                <div className="px-6 pb-5 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                  {faq.a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
-  );
-};
+  )
+}
