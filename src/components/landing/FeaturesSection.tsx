@@ -1,39 +1,39 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Database, Sparkles, Mail, CreditCard } from 'lucide-react';
+import { Plug, Globe, CreditCard, BarChart3 } from 'lucide-react';
 
 const features = [
   {
-    icon: Database,
-    title: 'Unified Data Sources',
-    description: 'Connect all your databases, APIs, and services in one place. Manage everything from a single dashboard.',
-    color: 'bg-amber-50 dark:bg-amber-950',
-    iconBg: 'bg-amber-500',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-  },
-  {
-    icon: Sparkles,
-    title: 'AI-Powered Insights',
-    description: 'Describe what you want in plain English and let our AI build dashboards and reports automatically.',
+    icon: Plug,
+    title: 'Connect Any AI Platform',
+    description: 'Paste your Vapi, Retell, Make, or n8n API key. Getflowetic indexes your agents and workflows instantly — no custom code, no webhooks to configure.',
     color: 'bg-blue-50 dark:bg-blue-950',
     iconBg: 'bg-blue-500',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
   },
   {
-    icon: Mail,
-    title: 'Automated Alerts',
-    description: 'Set up email or Slack notifications for your metrics. Never miss critical changes in your data.',
-    color: 'bg-green-50 dark:bg-green-950',
-    iconBg: 'bg-green-500',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop',
+    icon: Globe,
+    title: 'Fully White-Labeled Portals',
+    description: 'Your logo. Your colors. Your domain. Every client portal is 100% branded as your agency — clients never see Getflowetic, Vapi, or any underlying platform.',
+    color: 'bg-violet-50 dark:bg-violet-950',
+    iconBg: 'bg-violet-500',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
   },
   {
     icon: CreditCard,
-    title: 'One-Click Sharing',
-    description: 'Share dashboards with clients and teammates. Control access with simple permission settings.',
-    color: 'bg-purple-50 dark:bg-purple-950',
-    iconBg: 'bg-purple-500',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
+    title: 'Built-In Stripe Billing',
+    description: 'Charge your clients monthly — directly to your Stripe account. Set your price, gate portal access, and collect revenue without invoicing tools or payment headaches.',
+    color: 'bg-emerald-50 dark:bg-emerald-950',
+    iconBg: 'bg-emerald-500',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+  },
+  {
+    icon: BarChart3,
+    title: 'Real-Time Client Dashboards',
+    description: 'Clients log into their portal and see live call volumes, workflow executions, success rates, and trends. No more "how is my AI agent doing?" emails from clients.',
+    color: 'bg-amber-50 dark:bg-amber-950',
+    iconBg: 'bg-amber-500',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
   },
 ];
 
@@ -51,12 +51,12 @@ export const FeaturesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            Everything You Need To
+            Everything Your Agency Needs
             <br />
-            <span className="text-primary">Control Your Data</span>
+            <span className="text-primary">To Sell & Deliver AI</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Streamline your business with unified metrics and AI-powered analytics—all in one place.
+            Stop duct-taping Notion docs and screen shares. Give every client a professional portal — branded as yours, paid to you.
           </p>
         </motion.div>
 

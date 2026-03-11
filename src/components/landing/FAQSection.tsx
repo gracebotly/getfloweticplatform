@@ -9,24 +9,32 @@ import {
 
 const faqs = [
   {
-    question: 'How does the free trial work?',
-    answer: 'You get full access to all features for 14 days. No credit card required. After the trial, you can choose to subscribe or your account will be downgraded to the free tier with limited features.',
+    question: 'What does "white-label" mean exactly?',
+    answer: 'It means your client portals show your agency\'s branding — your logo, your colors, your domain — with zero mention of Getflowetic. Your clients think you built the platform. The only time Getflowetic branding appears is during your free trial. The moment you subscribe, it\'s gone.',
   },
   {
-    question: 'What data sources can I connect?',
-    answer: 'Flowetic supports all major databases (PostgreSQL, MySQL, MongoDB), cloud services (AWS, GCP, Azure), SaaS tools (Stripe, HubSpot, Salesforce), and custom APIs. We\'re adding new integrations weekly.',
+    question: 'Do my clients need accounts on Vapi, Retell, Make, or n8n?',
+    answer: 'No. Your clients only ever see the portal you share with them. They log in to a branded dashboard — they never touch, see, or even know about the underlying platforms you use. All the tech stays on your side.',
   },
   {
-    question: 'Is my data secure?',
-    answer: 'Absolutely. We use bank-level encryption for all data in transit and at rest. We\'re SOC 2 Type II compliant and never store your raw data—only the aggregated metrics you choose to track.',
+    question: 'How does client billing work?',
+    answer: 'You connect your own Stripe account to Getflowetic via Stripe Connect. When you gate a client portal behind a payment, your clients pay you directly — the money goes to your Stripe account. Getflowetic automatically collects a small platform fee (5% on Starter, 2% on Pro).',
   },
   {
-    question: 'Can I cancel anytime?',
-    answer: 'Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Your access continues until the end of your billing period.',
+    question: 'What happens during the free trial?',
+    answer: 'Starter comes with a 7-day free trial — no card required. Pro comes with a 14-day free trial with a card on file. During the trial, your client portals show Getflowetic branding. The moment you subscribe, they flip to your brand immediately.',
   },
   {
-    question: 'Do you offer team plans?',
-    answer: 'Yes! The Pro plan includes up to 5 team members. For larger teams, contact us for enterprise pricing with custom limits and features.',
+    question: 'How fast can I get my first portal live?',
+    answer: 'Most agencies have their first white-labeled portal live within 60 seconds of connecting their platform. You paste your API key, our wizard walks you through portal setup, and you share a link. That\'s it.',
+  },
+  {
+    question: 'Can I charge different amounts to different clients?',
+    answer: 'Yes. Every portal you create can have its own pricing — free access via magic link, or a custom monthly subscription amount gated by Stripe. You set the price per portal.',
+  },
+  {
+    question: 'What platforms do you support?',
+    answer: 'Currently: Vapi, Retell AI, Make, and n8n. These cover the vast majority of AI voice agent and automation agency workflows. More integrations — including Voiceflow and others — are on the roadmap.',
   },
 ];
 
@@ -46,6 +54,9 @@ export const FAQSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Frequently Asked Questions
           </h2>
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-center">
+            Everything agencies ask before switching from custom dashboards and manual reporting.
+          </p>
         </motion.div>
 
         {/* FAQ Accordion */}

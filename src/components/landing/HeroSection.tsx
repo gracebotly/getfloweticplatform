@@ -4,17 +4,11 @@ import { Link } from 'react-router-dom';
 import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
 import { useRef } from 'react';
 
-// Import platform logos
-import postgresqlLogo from '@/assets/logos/postgresql.svg';
-import mongodbLogo from '@/assets/logos/mongodb.svg';
-import googleCloudLogo from '@/assets/logos/google-cloud.svg';
-import slackLogo from '@/assets/logos/slack.svg';
-
 const floatingLogos = [
-  { logo: postgresqlLogo, name: 'PostgreSQL', position: 'top-32 left-[10%]', delay: 0 },
-  { logo: googleCloudLogo, name: 'Google Cloud', position: 'top-24 right-[10%]', delay: 0.2 },
-  { logo: mongodbLogo, name: 'MongoDB', position: 'top-72 left-[5%]', delay: 0.4 },
-  { logo: slackLogo, name: 'Slack', position: 'top-64 right-[8%]', delay: 0.6 },
+  { name: 'Vapi', position: 'top-32 left-[10%]', delay: 0 },
+  { name: 'Retell AI', position: 'top-24 right-[10%]', delay: 0.2 },
+  { name: 'Make', position: 'top-72 left-[5%]', delay: 0.4 },
+  { name: 'n8n', position: 'top-64 right-[8%]', delay: 0.6 },
 ];
 
 export const HeroSection = () => {
@@ -53,9 +47,9 @@ export const HeroSection = () => {
               delay: item.delay,
               ease: 'easeInOut',
             }}
-            className="bg-card p-4 rounded-2xl shadow-xl border"
+            className="bg-card px-4 py-3 rounded-2xl shadow-xl border"
           >
-            <img src={item.logo} alt={item.name} className="w-10 h-10" />
+            <span className="text-sm font-semibold text-foreground">{item.name}</span>
           </motion.div>
         </motion.div>
       ))}
@@ -87,7 +81,7 @@ export const HeroSection = () => {
               />
             </div>
             <span className="text-sm font-medium text-foreground">
-              Trusted by 500+ data teams
+              Trusted by 10+ AI automation agencies
             </span>
           </div>
         </motion.div>
@@ -100,12 +94,12 @@ export const HeroSection = () => {
           className="text-center"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-            Unified Data Control.
+            Your AI Agent.
             <br />
-            <span className="text-primary">Smarter Insights.</span>
+            <span className="text-primary">Your Brand. Your Revenue.</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Connect all your data sources, build powerful dashboards, and get actionable insights—all in one place.
+            Connect your Vapi, Retell, Make, or n8n workflows — get a fully white-labeled client portal in 60 seconds. Your clients pay you directly via Stripe. Your brand. Their dashboard. Your revenue.
           </p>
         </motion.div>
 
@@ -118,10 +112,10 @@ export const HeroSection = () => {
         >
           <Link to="/auth">
             <Button size="lg" className="rounded-full px-8 text-base">
-              Try for Free
+              Start Free — No Card Required
             </Button>
           </Link>
-          <p className="text-sm text-muted-foreground mt-3">No card required</p>
+          <p className="text-sm text-muted-foreground mt-3">7-day free trial · White-label from day one</p>
         </motion.div>
 
         {/* Dashboard Preview with 3D Scroll Animation */}
@@ -139,7 +133,7 @@ export const HeroSection = () => {
           >
             <img 
               src={dashboardPreview} 
-              alt="Flowetic Dashboard Preview showing connections and integrations" 
+              alt="Getflowetic — White-labeled client portal dashboard for AI automation agencies" 
               className="w-full h-auto rounded-2xl shadow-2xl border mx-auto max-w-5xl"
             />
           </motion.div>

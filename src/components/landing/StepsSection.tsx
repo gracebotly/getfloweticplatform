@@ -4,24 +4,24 @@ import { UserPlus, Database, Share2 } from 'lucide-react';
 
 const steps = [
   {
-    number: 1,
+    number: '01',
     icon: UserPlus,
-    title: 'Create Free Account',
-    description: 'Add your details and preferences in under 2 minutes.',
+    title: 'Connect Your Platform',
+    description: 'Paste your API key for Vapi, Retell, Make, or n8n. Getflowetic connects in seconds and automatically indexes all your agents and workflows — no setup scripts, no webhooks.',
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop',
   },
   {
-    number: 2,
+    number: '02',
     icon: Database,
-    title: 'Connect Your Data',
-    description: 'Link databases, APIs, or upload files with a few clicks.',
+    title: 'Build a Branded Portal',
+    description: 'Our AI wizard walks you through creating a client dashboard in under 60 seconds. Choose what to show, set your access type (magic link or paid), and apply your branding.',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
   },
   {
-    number: 3,
+    number: '03',
     icon: Share2,
-    title: 'Share & Analyze',
-    description: 'Build dashboards and share insights with your team.',
+    title: 'Share It & Get Paid',
+    description: 'Send your client a link. They log into a portal that looks like you built it from scratch. You charge them monthly through your connected Stripe account. Done.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
   },
 ];
@@ -39,11 +39,12 @@ export const StepsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
+          <p className="text-sm font-semibold uppercase tracking-wide text-primary mb-4">How It Works</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            Get Started In 3 Simple Steps
+            From API Key to Paid Client Portal in 60 Seconds
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Set up in minutes, connect your data sources, and make it easy to gain insights.
+            No custom code. No third-party dashboard tools. No Notion docs. Just connect, configure, and deliver.
           </p>
         </motion.div>
 

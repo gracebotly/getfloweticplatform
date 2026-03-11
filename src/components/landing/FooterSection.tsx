@@ -26,10 +26,10 @@ export const FooterSection = () => {
             <div className="bg-background/10 backdrop-blur-sm rounded-xl p-4 border border-background/20 w-40">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                <span className="text-sm text-background/80">Connections</span>
+                <span className="text-sm text-background/80">Portals Live</span>
               </div>
-              <div className="text-2xl font-bold text-background">24</div>
-              <div className="text-xs text-background/60">Active sources</div>
+              <div className="text-2xl font-bold text-background">47</div>
+              <div className="text-xs text-background/60">Across agencies</div>
             </div>
           </motion.div>
 
@@ -43,10 +43,10 @@ export const FooterSection = () => {
             <div className="bg-background/10 backdrop-blur-sm rounded-xl p-4 border border-background/20 w-44">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-primary" />
-                <span className="text-sm text-background/80">Growth</span>
+                <span className="text-sm text-background/80">Avg. Client MRR</span>
               </div>
-              <div className="text-2xl font-bold text-background">+47%</div>
-              <div className="text-xs text-background/60">This month</div>
+              <div className="text-2xl font-bold text-background">$850</div>
+              <div className="text-xs text-background/60">Per portal sold</div>
             </div>
           </motion.div>
 
@@ -74,14 +74,14 @@ export const FooterSection = () => {
             className="text-center relative z-10"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to take control of your data?
+              Ready to Turn Your AI Agents Into a Product?
             </h2>
             <p className="text-background/70 mb-8 max-w-lg mx-auto">
-              Join thousands of teams using Flowetic to unify their data and gain actionable insights.
+              Connect your first platform, get a white-labeled client portal, and start charging — in under 60 seconds.
             </p>
             <Link to="/auth">
               <Button size="lg" variant="secondary" className="rounded-full px-8">
-                Get Started Free
+                Start Free Trial
               </Button>
             </Link>
           </motion.div>
@@ -95,10 +95,10 @@ export const FooterSection = () => {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-lg">F</span>
               </div>
-              <span className="text-xl font-semibold">Flowetic</span>
+              <span className="text-xl font-semibold">Getflowetic</span>
             </Link>
             <p className="text-background/60 text-sm">
-              Unified data control for modern teams.
+              White-label AI agent portals for automation agencies.
             </p>
           </div>
 
@@ -125,7 +125,7 @@ export const FooterSection = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/60 text-sm">
-            © 2024 Flowetic. All rights reserved.
+            © 2024 Getflowetic. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-background/60 hover:text-background transition-colors text-sm">

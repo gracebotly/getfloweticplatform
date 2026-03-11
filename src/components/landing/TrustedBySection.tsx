@@ -1,32 +1,15 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-import postgresqlLogo from '@/assets/logos/postgresql.svg';
-import mysqlLogo from '@/assets/logos/mysql.svg';
-import mongodbLogo from '@/assets/logos/mongodb.svg';
-import googleCloudLogo from '@/assets/logos/google-cloud.svg';
-import awsLogo from '@/assets/logos/aws.svg';
-import redisLogo from '@/assets/logos/redis.svg';
-import slackLogo from '@/assets/logos/slack.svg';
 import stripeLogo from '@/assets/logos/stripe.svg';
-import snowflakeLogo from '@/assets/logos/snowflake.svg';
-import salesforceLogo from '@/assets/logos/salesforce.svg';
-import hubspotLogo from '@/assets/logos/hubspot.svg';
-import tableauLogo from '@/assets/logos/tableau.svg';
 
 const logos = [
-  { name: 'PostgreSQL', logo: postgresqlLogo },
-  { name: 'MySQL', logo: mysqlLogo },
-  { name: 'MongoDB', logo: mongodbLogo },
-  { name: 'Google Cloud', logo: googleCloudLogo },
-  { name: 'AWS', logo: awsLogo },
-  { name: 'Redis', logo: redisLogo },
-  { name: 'Slack', logo: slackLogo },
+  { name: 'Vapi' },
+  { name: 'Retell AI' },
+  { name: 'Make' },
+  { name: 'n8n' },
   { name: 'Stripe', logo: stripeLogo },
-  { name: 'Snowflake', logo: snowflakeLogo },
-  { name: 'Salesforce', logo: salesforceLogo },
-  { name: 'HubSpot', logo: hubspotLogo },
-  { name: 'Tableau', logo: tableauLogo },
+  { name: 'More coming soon' },
 ];
 
 
@@ -43,7 +26,15 @@ export const TrustedBySection = () => {
           transition={{ duration: 0.6 }}
           className="text-center text-sm font-medium text-foreground mb-10"
         >
-          Built for freelancers, consultants, and small businesses.
+          Works With Your Existing Stack
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center text-muted-foreground mb-10"
+        >
+          Connect the platforms you already use. No rebuilding, no migration.
         </motion.p>
       </div>
 
@@ -62,22 +53,30 @@ export const TrustedBySection = () => {
           <div className="flex animate-marquee gap-16 items-center group-hover:[animation-play-state:paused]">
             {logos.map((logo) => (
               <div key={logo.name} className="flex-shrink-0 px-4">
-                <img
-                  src={logo.logo}
-                  alt={logo.name}
-                  className="h-8 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                />
+                {logo.logo ? (
+                  <img
+                    src={logo.logo}
+                    alt={logo.name}
+                    className="h-8 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                ) : (
+                  <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap">{logo.name}</span>
+                )}
               </div>
             ))}
           </div>
           <div className="flex animate-marquee gap-16 items-center group-hover:[animation-play-state:paused]" aria-hidden="true">
             {logos.map((logo) => (
               <div key={logo.name} className="flex-shrink-0 px-4">
-                <img
-                  src={logo.logo}
-                  alt={logo.name}
-                  className="h-8 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                />
+                {logo.logo ? (
+                  <img
+                    src={logo.logo}
+                    alt={logo.name}
+                    className="h-8 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                ) : (
+                  <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap">{logo.name}</span>
+                )}
               </div>
             ))}
           </div>
