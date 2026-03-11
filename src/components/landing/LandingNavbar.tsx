@@ -5,8 +5,8 @@ import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const navLinks = [
+  { label: 'How It Works', href: '#how-it-works' },
   { label: 'Features', href: '#features' },
-  { label: 'How it works', href: '#how-it-works' },
   { label: 'Integrations', href: '#integrations' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
@@ -40,7 +40,7 @@ export const LandingNavbar = () => {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">F</span>
             </div>
-            <span className="text-xl font-semibold text-foreground">Flowetic</span>
+            <span className="text-xl font-semibold text-foreground">Getflowetic</span>
           </Link>
 
           {/* Desktop Navigation */}

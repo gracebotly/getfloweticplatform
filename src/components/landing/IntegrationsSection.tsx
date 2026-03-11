@@ -4,46 +4,33 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 // Import platform logos
-import postgresqlLogo from '@/assets/logos/postgresql.svg';
-import mysqlLogo from '@/assets/logos/mysql.svg';
-import mongodbLogo from '@/assets/logos/mongodb.svg';
-import googleCloudLogo from '@/assets/logos/google-cloud.svg';
-import awsLogo from '@/assets/logos/aws.svg';
-import redisLogo from '@/assets/logos/redis.svg';
-import slackLogo from '@/assets/logos/slack.svg';
 import stripeLogo from '@/assets/logos/stripe.svg';
-import snowflakeLogo from '@/assets/logos/snowflake.svg';
-import salesforceLogo from '@/assets/logos/salesforce.svg';
-import hubspotLogo from '@/assets/logos/hubspot.svg';
-import tableauLogo from '@/assets/logos/tableau.svg';
 
 const integrations = [
-  { name: 'PostgreSQL', logo: postgresqlLogo },
-  { name: 'MySQL', logo: mysqlLogo },
-  { name: 'MongoDB', logo: mongodbLogo },
-  { name: 'Stripe', logo: stripeLogo },
-  { name: 'Google Cloud', logo: googleCloudLogo },
-  { name: 'AWS', logo: awsLogo },
-  { name: 'Salesforce', logo: salesforceLogo },
-  { name: 'HubSpot', logo: hubspotLogo },
-  { name: 'Snowflake', logo: snowflakeLogo },
-  { name: 'Redis', logo: redisLogo },
-  { name: 'Tableau', logo: tableauLogo },
-  { name: 'Slack', logo: slackLogo },
+  { name: 'Vapi', description: 'Voice AI agents' },
+  { name: 'Retell AI', description: 'Voice agents & analytics' },
+  { name: 'Make', description: 'Workflow automation' },
+  { name: 'n8n', description: 'Open-source automation' },
+  { name: 'Stripe', description: 'Payment infrastructure', logo: stripeLogo },
 ];
 
 const IntegrationCard = ({ integration }: { integration: typeof integrations[0] }) => (
   <div className="flex items-center gap-4 bg-card rounded-xl px-4 py-3 border shadow-sm">
     <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-background p-1.5">
-      <img 
-        src={integration.logo} 
-        alt={integration.name} 
-        className="w-full h-full object-contain"
-      />
+      {integration.logo ? (
+        <img
+          src={integration.logo}
+          alt={integration.name}
+          className="w-full h-full object-contain"
+        />
+      ) : (
+        <span className="text-xs font-semibold text-foreground">{integration.name}</span>
+      )}
     </div>
-    <span className="text-foreground font-medium flex-1">
-      {integration.name}
-    </span>
+    <div className="flex-1">
+      <p className="text-foreground font-medium">{integration.name}</p>
+      <p className="text-xs text-muted-foreground">{integration.description}</p>
+    </div>
     <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
   </div>
 );
@@ -66,14 +53,17 @@ export const IntegrationsSection = () => {
                 Integrations
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Connect Any Data Source
+                Plug In. Don&apos;t Start Over.
               </h2>
               <p className="text-muted-foreground mb-8">
-                From databases to APIs to cloud services, connect all your data sources in seconds. No complex setup required.
+                Getflowetic connects to the four platforms AI agencies use most. Your existing agents and workflows become client-ready products — nothing needs to be rebuilt.
               </p>
               <Link to="/auth">
-                <Button className="rounded-full">Get Started Now</Button>
+                <Button className="rounded-full">Connect Your Stack</Button>
               </Link>
+              <p className="mt-4 text-sm text-muted-foreground">
+                More integrations coming soon — Voiceflow, AgentOps, and more.
+              </p>
             </motion.div>
 
             {/* Right - Vertical Marquee with Real Logos */}

@@ -4,19 +4,19 @@ import { X, Check } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const otherToolsPainPoints = [
-  "Time wasted on manual data entry",
-  "Scattered client information",
-  "No real-time insights",
-  "Complex setup and learning curve",
-  "Overwhelming features you'll never use"
+  "Clients ask 'how is my AI agent doing?' every week",
+  'Monthly PDF reports take hours to produce manually',
+  'No professional way to charge clients for portal access',
+  'Building a custom dashboard costs $10K+ and months of dev time',
+  'Clients see Vapi, Retell, or n8n in the URL — no professional brand'
 ];
 
 const floweticBenefits = [
-  "Automated data syncing",
-  "Centralized client dashboard",
-  "Real-time analytics and reports",
-  "Quick setup in minutes",
-  "Simple, focused features"
+  'Clients have a live dashboard — questions stop immediately',
+  'Real-time portals replace monthly reports entirely',
+  'Built-in Stripe billing — charge clients directly from the portal',
+  'White-labeled portal live in 60 seconds — no dev work needed',
+  '100% your brand — custom domain, logo, colors, and footer'
 ];
 
 export const ComparisonSection = () => {
@@ -33,10 +33,10 @@ export const ComparisonSection = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Everything You Need. Nothing You Don't.
+            Before vs. After Getflowetic
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Unlike complex enterprise tools, Flowetic gives you just the features to manage your clients and get things done.
+            AI agencies that switch stop spending time on manual reporting and start charging for professional client access.
           </p>
         </motion.div>
 
@@ -52,7 +52,7 @@ export const ComparisonSection = () => {
                 {/* Other Tools Column */}
                 <div className="p-6 md:p-8 bg-muted/50">
                   <h3 className="text-lg font-semibold text-muted-foreground mb-6">
-                    Other Tools
+                    Without Getflowetic
                   </h3>
                   <ul className="space-y-4">
                     {otherToolsPainPoints.map((point, index) => (
@@ -75,7 +75,7 @@ export const ComparisonSection = () => {
                 {/* Flowetic Column */}
                 <div className="p-6 md:p-8 bg-card border-l-4 border-primary">
                   <h3 className="text-lg font-semibold text-primary mb-6">
-                    Flowetic
+                    With Getflowetic
                   </h3>
                   <ul className="space-y-4">
                     {floweticBenefits.map((benefit, index) => (

@@ -4,40 +4,40 @@ import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Sarah Chen',
-    role: 'Product Manager',
-    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face',
-    content: 'Before Flowetic I spent hours compiling reports from different sources. Now I have everything in one place and can focus on actual analysis.',
-  },
-  {
-    name: 'Marcus Johnson',
-    role: 'Data Analyst',
+    name: 'Marcus T.',
+    role: 'Founder, Voice AI Agency',
     avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
-    content: 'The AI-powered dashboards are incredible. I describe what I need, and Flowetic builds it for me. My productivity has tripled.',
+    content: 'I connected my Vapi account and had a white-labeled dashboard live for my first client in under 5 minutes. They thought I built it from scratch. Worth every dollar.',
   },
   {
-    name: 'Elena Rodriguez',
-    role: 'Startup Founder',
-    avatarUrl: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&h=200&fit=crop&crop=face',
-    content: 'Setting up data pipelines used to take my team weeks. With Flowetic, we connected all our sources in a single afternoon.',
+    name: 'Priya K.',
+    role: 'AI Automation Consultant',
+    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face',
+    content: 'My clients used to ask me weekly how their workflows were performing. Now they log into their own portal and see everything in real-time. The questions stopped.',
   },
   {
-    name: 'David Park',
-    role: 'Operations Lead',
-    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
-    content: 'The automated alerts have been a game-changer. We catch issues before they become problems, and our response time has improved dramatically.',
+    name: 'James R.',
+    role: 'n8n Automation Agency Owner',
+    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
+    content: 'The Stripe integration alone saved me 3 hours a month in invoicing. Clients just pay through the portal. Everything is automated. It basically runs itself.',
   },
   {
-    name: 'Alex Thompson',
-    role: 'Marketing Director',
+    name: 'Yemi A.',
+    role: 'Founder, Make.com Specialist Agency',
     avatarUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
-    content: 'Finally, a tool that makes data accessible to non-technical users. Our marketing team now makes data-driven decisions without waiting on engineering.',
+    content: 'I was charging $500/month for clients with zero visibility into their automations. Now I charge $750 and give them a dashboard. Nobody has questioned the price increase.',
   },
   {
-    name: 'Lisa Wang',
-    role: 'Finance Manager',
+    name: 'Tyler M.',
+    role: 'Retell AI Partner',
+    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
+    content: 'The white-labeling is complete. My clients see my logo, my colors, my domain. Getflowetic is completely invisible. That\'s exactly what I needed.',
+  },
+  {
+    name: 'Sofia L.',
+    role: 'AI Agency Owner',
     avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face',
-    content: 'The real-time sync across all our financial tools has eliminated manual reconciliation. We save 20+ hours every month.',
+    content: 'I used to send monthly PDF reports manually. Now clients have live dashboards. My agency looks 10x more professional and I spend zero time on reporting.',
   },
 ];
 
@@ -82,10 +82,10 @@ export const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Why Teams <span className="text-primary">❤️</span> Flowetic
+            Why AI Agencies Choose <span className="text-primary">Getflowetic</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            See how teams are transforming their data workflows
+            Agencies are replacing custom dashboards and Notion docs with branded portals their clients actually pay for.
           </p>
         </motion.div>
 
