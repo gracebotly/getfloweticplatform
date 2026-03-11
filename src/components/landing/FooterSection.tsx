@@ -7,9 +7,6 @@ const footerLinks = {
   Information: ['Privacy', 'Terms', 'Security', 'Cookies', 'Contact'],
 };
 
-// Blog is listed separately — visible but not a working link
-const footerBlogLabel = 'Blog';
-
 export const FooterSection = () => {
   return (
     <footer className="bg-foreground text-background py-16">
@@ -118,12 +115,15 @@ export const FooterSection = () => {
                     </a>
                   </li>
                 ))}
-                {/* Blog — visible but not clickable, only appended under Sections */}
+                {/* Blog appended under Sections */}
                 {category === 'Sections' && (
                   <li>
-                    <span className="text-background/30 text-sm cursor-default select-none">
-                      {footerBlogLabel}
-                    </span>
+                    <a
+                      href="#"
+                      className="text-background/60 hover:text-background transition-colors text-sm"
+                    >
+                      Blog
+                    </a>
                   </li>
                 )}
               </ul>
