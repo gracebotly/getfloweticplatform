@@ -2,6 +2,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
+const sectionAnchors: Record<string, string> = {
+  'How It Works': '#how-it-works',
+  'Features': '#features',
+  'Integrations': '#integrations',
+  'Pricing': '#pricing',
+};
+
 const footerLinks = {
   Sections: ['How It Works', 'Features', 'Integrations', 'Pricing'],
   Information: ['Privacy', 'Terms', 'Security', 'Cookies', 'Contact'],
@@ -108,14 +115,18 @@ export const FooterSection = () => {
                 {links.map((link) => (
                   <li key={link}>
                     <a
-                      href="#"
+                      href={
+                        category === 'Sections'
+                          ? sectionAnchors[link] ?? '#'
+                          : '#'
+                      }
                       className="text-background/60 hover:text-background transition-colors text-sm"
                     >
                       {link}
                     </a>
                   </li>
                 ))}
-                {/* Blog appended under Sections */}
+                {/* Blog appended under Sections — links to # until blog page exists */}
                 {category === 'Sections' && (
                   <li>
                     <a
