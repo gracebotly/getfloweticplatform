@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const footerLinks = {
-  Product: ['Features', 'Integrations', 'Pricing', 'Changelog'],
-  Company: ['About', 'Blog', 'Careers', 'Contact'],
-  Resources: ['Documentation', 'API Reference', 'Support', 'Status'],
-  Legal: ['Privacy', 'Terms', 'Security', 'Cookies'],
+  Sections: ['How It Works', 'Features', 'Integrations', 'Pricing'],
+  Information: ['Privacy', 'Terms', 'Security', 'Cookies', 'Contact'],
 };
+
+// Blog is listed separately — visible but not a working link
+const footerBlogLabel = 'Blog';
 
 export const FooterSection = () => {
   return (
@@ -88,7 +89,7 @@ export const FooterSection = () => {
         </div>
 
         {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
           {/* Logo */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
@@ -117,6 +118,14 @@ export const FooterSection = () => {
                     </a>
                   </li>
                 ))}
+                {/* Blog — visible but not clickable, only appended under Sections */}
+                {category === 'Sections' && (
+                  <li>
+                    <span className="text-background/30 text-sm cursor-default select-none">
+                      {footerBlogLabel}
+                    </span>
+                  </li>
+                )}
               </ul>
             </div>
           ))}
@@ -125,7 +134,7 @@ export const FooterSection = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/60 text-sm">
-            © 2024 Getflowetic. All rights reserved.
+            © 2026 Getflowetic. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-background/60 hover:text-background transition-colors text-sm">
