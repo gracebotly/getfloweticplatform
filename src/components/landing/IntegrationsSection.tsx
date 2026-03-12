@@ -5,15 +5,12 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-// Import platform logos
-import stripeLogo from '@/assets/logos/stripe.svg';
-
 const integrations = [
   { name: 'Vapi', description: 'Voice AI agents' },
   { name: 'Retell AI', description: 'Voice agents & analytics' },
   { name: 'Make', description: 'Workflow automation' },
   { name: 'n8n', description: 'Open-source automation' },
-  { name: 'Stripe', description: 'Payment infrastructure', logo: stripeLogo },
+  { name: 'Stripe', description: 'Payment infrastructure', logo: '/assets/logos/stripe.svg' },
 ];
 
 const IntegrationCard = ({ integration }: { integration: typeof integrations[0] }) => (

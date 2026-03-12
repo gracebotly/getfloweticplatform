@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
 import { useRef } from 'react';
 
 const floatingLogos = [
@@ -134,7 +133,7 @@ export const HeroSection = () => {
             transition={{ duration: 1, delay: 0.6 }}
           >
             <img 
-              src={dashboardPreview} 
+              src="/assets/flowetic-dashboard-screenshot.png"
               alt="Getflowetic — White-labeled client portal dashboard for AI automation agencies" 
               className="w-full h-auto rounded-2xl shadow-2xl border mx-auto max-w-5xl"
             />
