@@ -1,6 +1,8 @@
+"use client";
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
 import { useRef } from 'react';
 
@@ -110,7 +112,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col items-center mt-10"
         >
-          <Link to="/auth">
+          <Link href="https://app.getflowetic.com/auth">
             <Button size="lg" className="rounded-full px-8 text-base">
               Start Free — No Card Required
             </Button>

@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 const sectionAnchors: Record<string, string> = {
@@ -84,7 +86,7 @@ export const FooterSection = () => {
             <p className="text-background/70 mb-8 max-w-lg mx-auto">
               Connect your first platform, get a white-labeled client portal, and start charging — in under 60 seconds.
             </p>
-            <Link to="/auth">
+            <Link href="https://app.getflowetic.com/auth">
               <Button size="lg" variant="secondary" className="rounded-full px-8">
                 Start Free Trial
               </Button>
@@ -96,7 +98,7 @@ export const FooterSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
           {/* Logo */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-lg">F</span>
               </div>

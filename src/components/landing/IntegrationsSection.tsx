@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 // Import platform logos
 import stripeLogo from '@/assets/logos/stripe.svg';
@@ -58,7 +60,7 @@ export const IntegrationsSection = () => {
               <p className="text-muted-foreground mb-8">
                 Getflowetic connects to the four platforms AI agencies use most. Your existing agents and workflows become client-ready products — nothing needs to be rebuilt.
               </p>
-              <Link to="/auth">
+              <Link href="https://app.getflowetic.com/auth">
                 <Button className="rounded-full">Connect Your Stack</Button>
               </Link>
               <p className="mt-4 text-sm text-muted-foreground">
