@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'Integrations', href: '#integrations' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 export const LandingNavbar = () => {

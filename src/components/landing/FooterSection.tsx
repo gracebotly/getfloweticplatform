@@ -128,15 +128,15 @@ export const FooterSection = () => {
                     </a>
                   </li>
                 ))}
-                {/* Blog appended under Sections — links to # until blog page exists */}
+                {/* Blog link under Sections */}
                 {category === 'Sections' && (
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/blog"
                       className="text-background/60 hover:text-background transition-colors text-sm"
                     >
                       Blog
-                    </a>
+                    </Link>
                   </li>
                 )}
               </ul>
