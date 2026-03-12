@@ -1,9 +1,11 @@
+"use client";
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const starterFeatures = [
   '5 white-labeled client portals',
@@ -132,7 +134,7 @@ export const PricingSection = () => {
                 ))}
               </ul>
 
-              <Link to="/auth" className="block mt-auto">
+              <Link href="https://app.getflowetic.com/auth" className="block mt-auto">
                 <Button variant="outline" className="w-full rounded-full" size="lg">
                   Start Free Trial
                 </Button>
@@ -183,7 +185,7 @@ export const PricingSection = () => {
                 ))}
               </ul>
 
-              <Link to="/auth" className="block mt-auto">
+              <Link href="https://app.getflowetic.com/auth" className="block mt-auto">
                 <Button variant="secondary" className="w-full rounded-full" size="lg">
                   Start Free Trial
                 </Button>

@@ -1,7 +1,8 @@
+"use client";
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import dashboardPreview from '@/assets/flowetic-dashboard-screenshot.png';
+import Link from 'next/link';
 import { useRef } from 'react';
 
 const floatingLogos = [
@@ -110,7 +111,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col items-center mt-10"
         >
-          <Link to="/auth">
+          <Link href="https://app.getflowetic.com/auth">
             <Button size="lg" className="rounded-full px-8 text-base">
               Start Free — No Card Required
             </Button>
@@ -132,7 +133,7 @@ export const HeroSection = () => {
             transition={{ duration: 1, delay: 0.6 }}
           >
             <img 
-              src={dashboardPreview} 
+              src="/assets/flowetic-dashboard-screenshot.png"
               alt="Getflowetic — White-labeled client portal dashboard for AI automation agencies" 
               className="w-full h-auto rounded-2xl shadow-2xl border mx-auto max-w-5xl"
             />

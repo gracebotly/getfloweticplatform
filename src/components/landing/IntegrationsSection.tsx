@@ -1,17 +1,16 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-
-// Import platform logos
-import stripeLogo from '@/assets/logos/stripe.svg';
+import Link from 'next/link';
 
 const integrations = [
   { name: 'Vapi', description: 'Voice AI agents' },
   { name: 'Retell AI', description: 'Voice agents & analytics' },
   { name: 'Make', description: 'Workflow automation' },
   { name: 'n8n', description: 'Open-source automation' },
-  { name: 'Stripe', description: 'Payment infrastructure', logo: stripeLogo },
+  { name: 'Stripe', description: 'Payment infrastructure', logo: '/assets/logos/stripe.svg' },
 ];
 
 const IntegrationCard = ({ integration }: { integration: typeof integrations[0] }) => (
@@ -58,7 +57,7 @@ export const IntegrationsSection = () => {
               <p className="text-muted-foreground mb-8">
                 Getflowetic connects to the four platforms AI agencies use most. Your existing agents and workflows become client-ready products — nothing needs to be rebuilt.
               </p>
-              <Link to="/auth">
+              <Link href="https://app.getflowetic.com/auth">
                 <Button className="rounded-full">Connect Your Stack</Button>
               </Link>
               <p className="mt-4 text-sm text-muted-foreground">

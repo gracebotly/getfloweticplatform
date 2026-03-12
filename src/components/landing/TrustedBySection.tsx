@@ -1,14 +1,14 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-
-import stripeLogo from '@/assets/logos/stripe.svg';
 
 const logos = [
   { name: 'Vapi' },
   { name: 'Retell AI' },
   { name: 'Make' },
   { name: 'n8n' },
-  { name: 'Stripe', logo: stripeLogo },
+  { name: 'Stripe', logo: '/assets/logos/stripe.svg' },
   { name: 'More coming soon' },
 ];
 
