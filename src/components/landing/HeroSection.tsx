@@ -116,7 +116,6 @@ export const HeroSection = () => {
               Start Free — No Card Required
             </Button>
           </Link>
-          <p className="text-sm text-muted-foreground mt-3">7-day free trial · White-label from day one</p>
         </motion.div>
 
         {/* Dashboard Preview with 3D Scroll Animation */}
