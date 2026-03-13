@@ -80,7 +80,7 @@ export const IntegrationsSection = () => {
               
               {/* Scrolling container */}
               <div className="flex flex-col group">
-                <div className="flex flex-col gap-3 animate-marquee-vertical group-hover:[animation-play-state:paused]">
+                <div className="flex flex-col gap-3 pb-3 animate-marquee-vertical group-hover:[animation-play-state:paused]">
                   {integrations.map((integration) => (
                     <IntegrationCard key={integration.name} integration={integration} />
                   ))}
