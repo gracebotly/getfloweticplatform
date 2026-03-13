@@ -9,11 +9,12 @@ const sectionAnchors: Record<string, string> = {
   'Features': '#features',
   'Integrations': '#integrations',
   'Pricing': '#pricing',
+  'FAQ': '#faq',
 };
 
 const footerLinks = {
   Sections: ['How It Works', 'Features', 'Integrations', 'Pricing'],
-  Information: ['Security', 'Cookies', 'Contact'],
+  Information: ['Blog', 'FAQ', 'Security', 'Contact'],
 };
 
 export const FooterSection = () => {
@@ -105,7 +106,7 @@ export const FooterSection = () => {
               <span className="text-xl font-semibold">Getflowetic</span>
             </Link>
             <p className="text-background/60 text-sm">
-              White-label AI services For automation agencies
+              White-label AI services for automation agencies
             </p>
           </div>
 
@@ -116,13 +117,27 @@ export const FooterSection = () => {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
-                    {category === 'Information' && link === 'Contact' ? (
+                    {link === 'Contact' ? (
                       <Link
                         href="/contact"
                         className="text-background/60 hover:text-background transition-colors text-sm"
                       >
                         {link}
                       </Link>
+                    ) : link === 'Blog' ? (
+                      <Link
+                        href="/blog"
+                        className="text-background/60 hover:text-background transition-colors text-sm"
+                      >
+                        {link}
+                      </Link>
+                    ) : link === 'FAQ' ? (
+                      <a
+                        href="#faq"
+                        className="text-background/60 hover:text-background transition-colors text-sm"
+                      >
+                        {link}
+                      </a>
                     ) : (
                       <a
                         href={
@@ -137,17 +152,6 @@ export const FooterSection = () => {
                     )}
                   </li>
                 ))}
-                {/* Blog link under Sections */}
-                {category === 'Sections' && (
-                  <li>
-                    <Link
-                      href="/blog"
-                      className="text-background/60 hover:text-background transition-colors text-sm"
-                    >
-                      Blog
-                    </Link>
-                  </li>
-                )}
               </ul>
             </div>
           ))}
