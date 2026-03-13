@@ -105,7 +105,7 @@ export const FooterSection = () => {
               <span className="text-xl font-semibold">Getflowetic</span>
             </Link>
             <p className="text-background/60 text-sm">
-              White-label AI agent portals for automation agencies.
+              White-label AI services For automation agencies
             </p>
           </div>
 
