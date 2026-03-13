@@ -13,7 +13,7 @@ const sectionAnchors: Record<string, string> = {
 
 const footerLinks = {
   Sections: ['How It Works', 'Features', 'Integrations', 'Pricing'],
-  Information: ['Privacy', 'Terms', 'Security', 'Cookies', 'Contact'],
+  Information: ['Security', 'Cookies', 'Contact'],
 };
 
 export const FooterSection = () => {
@@ -150,12 +150,12 @@ export const FooterSection = () => {
             © 2026 Getflowetic. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-background/60 hover:text-background transition-colors text-sm">
+            <Link href="/privacy" className="text-background/60 hover:text-background transition-colors text-sm">
               Privacy Policy
-            </a>
-            <a href="#" className="text-background/60 hover:text-background transition-colors text-sm">
+            </Link>
+            <Link href="/terms" className="text-background/60 hover:text-background transition-colors text-sm">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
