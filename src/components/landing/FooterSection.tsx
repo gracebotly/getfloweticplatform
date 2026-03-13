@@ -13,8 +13,8 @@ const sectionAnchors: Record<string, string> = {
 };
 
 const footerLinks = {
-  Sections: ['How It Works', 'Features', 'Integrations', 'Pricing'],
-  Information: ['Blog', 'FAQ', 'Security', 'Contact'],
+  Sections: ['How It Works', 'Features', 'Integrations', 'Pricing', 'FAQ'],
+  Information: ['Blog', 'Cookies', 'Contact'],
 };
 
 export const FooterSection = () => {
