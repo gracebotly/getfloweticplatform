@@ -116,16 +116,25 @@ export const FooterSection = () => {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
-                    <a
-                      href={
-                        category === 'Sections'
-                          ? sectionAnchors[link] ?? '#'
-                          : '#'
-                      }
-                      className="text-background/60 hover:text-background transition-colors text-sm"
-                    >
-                      {link}
-                    </a>
+                    {category === 'Information' && link === 'Contact' ? (
+                      <Link
+                        href="/contact"
+                        className="text-background/60 hover:text-background transition-colors text-sm"
+                      >
+                        {link}
+                      </Link>
+                    ) : (
+                      <a
+                        href={
+                          category === 'Sections'
+                            ? sectionAnchors[link] ?? '#'
+                            : '#'
+                        }
+                        className="text-background/60 hover:text-background transition-colors text-sm"
+                      >
+                        {link}
+                      </a>
+                    )}
                   </li>
                 ))}
                 {/* Blog link under Sections */}

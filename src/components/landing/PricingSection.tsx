@@ -150,9 +150,9 @@ export const PricingSection = () => {
               <div className="flex items-baseline gap-1 mb-1">
                 <span className="text-3xl font-bold text-foreground">Custom</span>
               </div>
-              <button className="w-full mt-4 rounded-full border border-input bg-background px-6 py-3 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground">
+              <Link href="/contact" className="block mt-4 w-full rounded-full border border-input bg-background px-6 py-3 text-base font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground text-center">
                 Talk to Us →
-              </button>
+              </Link>
               <p className="text-xs text-muted-foreground text-center mt-2 invisible">
                 &nbsp;
               </p>
