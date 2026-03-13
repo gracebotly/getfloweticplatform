@@ -6,10 +6,10 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const integrations = [
-  { name: 'Vapi', description: 'Voice AI agents' },
-  { name: 'Retell AI', description: 'Voice agents & analytics' },
-  { name: 'Make', description: 'Workflow automation' },
-  { name: 'n8n', description: 'Open-source automation' },
+  { name: 'Vapi', description: 'Voice AI agents', logo: '/assets/logos/vapi.svg' },
+  { name: 'Retell AI', description: 'Voice agents & analytics', logo: '/assets/logos/retell.svg' },
+  { name: 'Make', description: 'Workflow automation', logo: '/assets/logos/make.svg' },
+  { name: 'n8n', description: 'Open-source automation', logo: '/assets/logos/n8n.svg' },
   { name: 'Stripe', description: 'Payment infrastructure', logo: '/assets/logos/stripe.svg' },
 ];
 
@@ -58,7 +58,7 @@ export const IntegrationsSection = () => {
                 Getflowetic connects to the four platforms AI agencies use most. Your existing agents and workflows become client-ready products — nothing needs to be rebuilt.
               </p>
               <Link href="https://app.getflowetic.com/auth">
-                <Button className="rounded-full">Connect Your Stack</Button>
+                <Button className="rounded-full">Start Free Trial</Button>
               </Link>
               <p className="mt-4 text-sm text-muted-foreground">
                 More integrations coming soon — Voiceflow, AgentOps, and more.
