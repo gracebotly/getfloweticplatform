@@ -4,6 +4,11 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
+import { ProductCallout } from "@/components/blog/ProductCallout";
+
+const mdxComponents = {
+  ProductCallout,
+};
 
 // SSG — pre-render every post at build time
 export async function generateStaticParams() {
@@ -181,7 +186,7 @@ export default async function BlogPostPage({
 
         {/* Article Body — MDXRemote compiles MDX on server */}
         <div className="prose prose-gray max-w-none prose-headings:font-bold prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:shadow-md prose-h2:text-2xl prose-h3:text-xl prose-table:text-sm">
-          <MDXRemote source={post.content} />
+          <MDXRemote source={post.content} components={mdxComponents} />
         </div>
 
         {/* CTA Box */}
