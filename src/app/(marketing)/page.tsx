@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/landing/HeroSection";
-import { TrustedBySection } from "@/components/landing/TrustedBySection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { StepsSection } from "@/components/landing/StepsSection";
 import { IntegrationsSection } from "@/components/landing/IntegrationsSection";
@@ -27,7 +26,6 @@ export default function HomePage() {
         branded client dashboards with Stripe billing in 60 seconds.
       </p>
       <HeroSection />
-      <TrustedBySection />
       <FeaturesSection />
       <StepsSection />
       <IntegrationsSection />
