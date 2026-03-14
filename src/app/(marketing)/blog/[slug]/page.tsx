@@ -4,6 +4,13 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
+import { ProductCallout } from "@/components/blog/ProductCallout";
+import { Blog1Content } from "@/components/blog/Blog1Content";
+
+const mdxComponents = {
+  ProductCallout,
+  Blog1Content,
+};
 
 // SSG — pre-render every post at build time
 export async function generateStaticParams() {
@@ -181,25 +188,11 @@ export default async function BlogPostPage({
 
         {/* Article Body — MDXRemote compiles MDX on server */}
         <div className="prose prose-gray max-w-none prose-headings:font-bold prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:shadow-md prose-h2:text-2xl prose-h3:text-xl prose-table:text-sm">
-          <MDXRemote source={post.content} />
+          <MDXRemote source={post.content} components={mdxComponents} />
         </div>
 
-        {/* CTA Box */}
-        <div className="mt-16 rounded-2xl border bg-primary/5 p-8 md:p-10 text-center">
-          <h3 className="text-xl font-bold text-foreground mb-2">
-            Ready to white-label your AI automations?
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-            Connect your Vapi, Retell, Make, or n8n workflows and deliver
-            branded client portals in 60 seconds.
-          </p>
-          <Link
-            href="https://app.getflowetic.com/auth"
-            className="inline-flex items-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
-          >
-            Start Free — No Card Required
-          </Link>
-        </div>
+        {/* Clean divider before related posts */}
+        <div className="mt-16 mb-16 border-t" />
 
         {/* Related Posts */}
         {related.length > 0 && (
