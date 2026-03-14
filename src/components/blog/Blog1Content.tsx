@@ -7,7 +7,6 @@ const accentBorder = "#c4b5fd";
 const border = "#e8e4e0";
 const bg = "#faf9f7";
 const card = "#ffffff";
-const calloutBg = "#f5f3ff";
 const textPrimary = "#1a1a1a";
 const textSecondary = "#555";
 const textMuted = "#888";
@@ -23,89 +22,73 @@ const p = (text: React.ReactNode, extra?: React.CSSProperties) => (
   <p style={{ ...serif, fontSize: "1rem", lineHeight: 1.85, color: textPrimary, marginBottom: "1.4rem", ...extra }}>{text}</p>
 );
 
-const h2 = (text: string) => (
-  <h2 style={{ ...serif, fontSize: "1.45rem", fontWeight: 700, color: textPrimary, marginTop: "3rem", marginBottom: "0.9rem", paddingTop: "1rem", borderTop: `2px solid ${border}` }}>{text}</h2>
+const h2 = (id: string, text: string) => (
+  <h2 id={id} style={{ ...serif, fontSize: "1.45rem", fontWeight: 700, color: textPrimary, marginTop: "3rem", marginBottom: "0.9rem", paddingTop: "1rem", borderTop: `2px solid ${border}` }}>{text}</h2>
 );
 
 export function Blog1Content() {
+  const toc = [
+    { id: "best-dashboard", label: "What is the best white-label AI dashboard?" },
+    { id: "why-clients-leave", label: "Why do agencies lose recurring clients?" },
+    { id: "portal-requirements", label: "What should a client portal include?" },
+    { id: "comparison", label: "How do the options compare?" },
+    { id: "who-needs-this", label: "Which agencies need this?" },
+    { id: "roi", label: "What's the ROI?" },
+    { id: "custom-build", label: "Should you build your own?" },
+    { id: "decision", label: "Quick decision framework" },
+    { id: "faq", label: "FAQ" },
+  ];
+
   return (
     <div style={{ ...serif, color: textPrimary, lineHeight: 1.85 }}>
 
-      {/* ── HERO SVG ── */}
-      <figure style={{ margin: "2rem 0 2.5rem", borderRadius: 16, overflow: "hidden", background: accentLight, minHeight: 280, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", border: `1px solid ${border}` }}>
-        <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxHeight: 300 }}>
-          <rect width="680" height="300" fill={accentLight}/>
-          <rect x="100" y="205" width="480" height="18" rx="4" fill={accentBorder}/>
-          <rect x="140" y="223" width="18" height="55" fill={accentMid}/>
-          <rect x="522" y="223" width="18" height="55" fill={accentMid}/>
-          <rect x="120" y="168" width="80" height="10" rx="2" fill="#fff" stroke={accent} strokeWidth="1.5"/>
-          <rect x="118" y="161" width="82" height="10" rx="2" fill="#f5f3ff" stroke={accent} strokeWidth="1.5"/>
-          <rect x="122" y="154" width="78" height="10" rx="2" fill="#fff" stroke={accent} strokeWidth="1.5"/>
-          <rect x="155" y="145" width="28" height="28" rx="3" fill={yellow}/>
-          <rect x="190" y="152" width="24" height="24" rx="3" fill="#86efac"/>
-          <circle cx="340" cy="135" r="38" fill="#fff" stroke={textPrimary} strokeWidth="2.5"/>
-          <rect x="302" y="170" width="76" height="38" rx="12" fill="#fff" stroke={textPrimary} strokeWidth="2.5"/>
-          <circle cx="328" cy="130" r="4" fill={textPrimary}/>
-          <circle cx="352" cy="130" r="4" fill={textPrimary}/>
-          <path d="M325 150 Q340 143 355 150" stroke={textPrimary} strokeWidth="2" fill="none" strokeLinecap="round"/>
-          <rect x="460" y="148" width="64" height="56" rx="12" fill={accent}/>
-          <circle cx="492" cy="137" r="22" fill={accent}/>
-          <circle cx="483" cy="134" r="5" fill={accentLight}/>
-          <circle cx="501" cy="134" r="5" fill={accentLight}/>
-          <path d="M483 147 Q492 153 501 147" stroke={accentLight} strokeWidth="2" fill="none" strokeLinecap="round"/>
-          <rect x="510" y="162" width="48" height="34" rx="5" fill="#fff" stroke={textPrimary} strokeWidth="1.5"/>
-          <rect x="515" y="167" width="38" height="6" rx="2" fill={accentMid}/>
-          <rect x="515" y="176" width="16" height="14" rx="2" fill={accentLight}/>
-          <rect x="534" y="176" width="19" height="14" rx="2" fill={accentBorder}/>
-          <text x="430" y="115" fontSize="20" fill={yellow}>✦</text>
-          <text x="540" y="104" fontSize="14" fill="#86efac">✦</text>
-        </svg>
-        <figcaption style={{ ...sans, fontSize: "0.78rem", color: textMuted, fontStyle: "italic", padding: "0.75rem 1.5rem", textAlign: "center" }}>
-          Your clients can&apos;t see what your AI is doing. A branded portal fixes that.
-        </figcaption>
-      </figure>
+      {/* ── TABLE OF CONTENTS ── */}
+      <nav style={{ background: bg, border: `1px solid ${border}`, borderRadius: 12, padding: "1.25rem 1.5rem", margin: "1.5rem 0 2.5rem" }}>
+        <p style={{ ...sans, fontSize: "0.8rem", fontWeight: 700, color: textMuted, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "0.6rem" }}>In this article</p>
+        <ol style={{ ...sans, fontSize: "0.88rem", margin: 0, paddingLeft: "1.2rem", lineHeight: 2 }}>
+          {toc.map(({ id, label }) => (
+            <li key={id}><a href={`#${id}`} style={{ color: accent, textDecoration: "none" }}>{label}</a></li>
+          ))}
+        </ol>
+      </nav>
 
       {/* ── LEAD ── */}
-      {p("Your clients have no idea what your AI agents are doing.", { fontSize: "1.1rem", fontStyle: "italic", borderLeft: `3px solid ${accentMid}`, paddingLeft: "1.25rem", lineHeight: 1.8 })}
-      {p("The Vapi calls are being handled. The n8n workflows are running. The ROI is real. But from where your client sits, nothing is visibly happening — so when renewal comes around, they hesitate. Not because the work stopped. Because they never saw it.")}
-      {p("That is the actual churn problem for AI automation agencies in 2026. A branded client portal is the fix. Not a PDF. Not a weekly email. A dashboard they log into under your brand, showing them exactly what their money is doing.")}
-
-      {/* ── PRODUCT CALLOUT ── */}
-      <div style={{ background: calloutBg, border: `1.5px solid ${accentBorder}`, borderRadius: 12, padding: "1.5rem 1.75rem", margin: "2.5rem 0", display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
-        <span style={{ fontSize: "1.6rem", flexShrink: 0, marginTop: "0.1rem" }}>⚡</span>
-        <div>
-          <p style={{ ...sans, fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.35rem", color: accent }}>Getflowetic — White-Label Portals in 60 Seconds</p>
-          <p style={{ ...sans, fontSize: "0.9rem", marginBottom: "0.75rem", color: "#444" }}>Connect Vapi, Retell, Make, or n8n. Branded client portal with Stripe billing. The only platform supporting voice AND workflow analytics in one view.</p>
-          <Link href="https://app.getflowetic.com/auth" style={{ ...sans, display: "inline-block", fontSize: "0.82rem", fontWeight: 700, background: accent, color: "white", padding: "0.45rem 1rem", borderRadius: 6, textDecoration: "none" }}>
-            Start Free Trial →
-          </Link>
-        </div>
-      </div>
+      {p(<>If you're running an AI automation agency right now, there's a good chance your clients have no idea what you're actually doing for them. And that's the problem a <strong>white-label AI dashboard</strong> solves.</>, { fontSize: "1.05rem" })}
+      {p("The Vapi calls are being handled. The n8n workflows are running. The ROI is real. But from where your client sits? Nothing is visibly happening — so when renewal comes around, they hesitate. Not because the work stopped. Because they never saw it.")}
+      {p("That's the actual churn problem for AI automation agencies in 2026. And a branded client portal is the fix. Not a PDF report. Not a weekly email. A dashboard they log into, under your brand, showing them exactly what their money is doing.")}
+      {p("This guide covers what that portal needs, what the real options cost, and the math you should run before you pick one.")}
 
       {/* ── SECTION 1 ── */}
-      {h2("The real reason AI agencies lose recurring clients")}
-      {p("Here is what actually happens without a portal.")}
-      {p("You build a Vapi voice receptionist that handles 400 calls a month for a dental practice. Your client has no idea. They see a quieter front desk and assume things are slow. They cancel at month three.")}
-      {p("You build an n8n workflow that qualifies and enriches leads before they hit the CRM. Your client just sees cleaner data. They think that is normal. They do not renew.")}
-      {p("This is not a product problem. It is a visibility problem. The work is happening. The value is real. But invisible value does not survive a budget conversation — and a branded portal turns your backend into something your client opens every Monday morning.")}
+      {h2("best-dashboard", "What is the best white-label AI agent dashboard for automation agencies?")}
+      {p(<>Short answer: it depends on your stack. If you're voice-only (Vapi or Retell), you've got a few options. But if any part of your stack runs on Make or n8n — or if you're running voice <em>and</em> workflows together — <Link href="https://app.getflowetic.com/auth" style={{ color: accent }}>Getflowetic</Link> is currently the only platform that covers both in a single branded portal.</>)}
+      {p("I'll break down all four real options below with honest pros and cons for each. But first, let's talk about why this matters so much.")}
 
       {/* ── SECTION 2 ── */}
-      {h2("What a client portal actually needs to deliver")}
-      {p("Most tools get one or two of these right. Make sure you are getting all five before you commit.")}
+      {h2("why-clients-leave", "Why do AI automation agencies lose recurring clients?")}
+      {p("Here's what actually happens without a portal.")}
+      {p("You build a Vapi voice receptionist that handles 400 calls a month for a dental practice. Your client has no idea. They see a quieter front desk and assume things are slow. They cancel at month three.")}
+      {p("You build an n8n workflow that qualifies and enriches leads before they hit the CRM. Your client just sees cleaner data. They think that's normal. They don't renew.")}
+      {p("This isn't a product problem. It's a visibility problem. The work is happening. The value is real. But invisible value doesn't survive a budget conversation. A branded portal turns your backend into something your client opens every Monday morning — and that's what keeps them paying.")}
+      {p(<>If you're running <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n workflows for clients</Link> or <Link href="/blog/vapi-white-label-dashboard-ai-agencies" style={{ color: accent }}>Vapi voice agents</Link>, this is the gap you're probably already feeling.</>)}
+
+      {/* ── SECTION 3 ── */}
+      {h2("portal-requirements", "What should a white-label AI client dashboard include?")}
+      {p("Most tools get one or two of these right. Make sure you're getting all five before you commit.")}
       {[
-        ["Complete branding — no asterisks.", "Your domain, your logo, your colors. Not 'mostly yours.' The moment your client sees the underlying platform name anywhere — in a footer, an email, a subdomain — the premium positioning is gone."],
-        ["Live data, not exports.", "For voice agencies: call volume, success rates, sentiment, transcripts from Vapi or Retell. For workflow agencies: execution counts, failure rates, runtime trends from Make or n8n. A dashboard running on weekly CSV exports is a spreadsheet with a logo on it."],
-        ["Outcomes your client can read.", "'Your AI handled 847 calls last month and saved an estimated $12,400 in staff costs' is a renewal. A raw call log is not. The platform should do that translation automatically."],
+        ["Complete branding — no asterisks.", "Your domain, your logo, your colors. Not 'mostly yours.' The moment your client sees the underlying platform name anywhere — in a footer, an email, a subdomain — your premium positioning is gone."],
+        ["Live data, not exports.", "For voice agencies: call volume, success rates, sentiment, transcripts pulled from Vapi or Retell. For workflow agencies: execution counts, failure rates, runtime trends from Make or n8n. A dashboard running on weekly CSV exports is just a spreadsheet with a logo on it."],
+        ["Outcomes your client can actually read.", "'Your AI handled 847 calls last month and saved an estimated $12,400 in staff costs' — that's a renewal. A raw call log isn't. The platform should do that translation automatically, not leave it to you."],
         ["Client billing built in.", "Stripe Connect, not a manual invoice. Clients pay you directly. You set the price. The portal handles the rest."],
-        ["Setup in minutes, not weeks.", "If a new client portal requires engineering time, the tool was not built for agencies. The setup should be a wizard."],
+        ["Setup in minutes, not weeks.", "If spinning up a new client portal requires a developer, the tool wasn't built for agencies. It should be a wizard."],
       ].map(([title, body]) => (
         p(<><strong>{title}</strong> {body}</>, {})
       ))}
 
-      {/* ── SECTION 3 — DECISION TREE ── */}
-      {h2("How the options compare")}
-      {p("There are four real platforms in this space in 2026. Here is where they each stand.")}
+      {/* ── SECTION 4 — COMPARISON ── */}
+      {h2("comparison", "How do the options compare?")}
+      {p("There are four real platforms in this space right now. Here's where they each stand.")}
 
+      {/* ── DECISION TREE SVG ── */}
       <figure style={{ margin: "2rem 0", borderRadius: 14, overflow: "hidden", background: bg, border: `1px solid ${border}`, display: "flex", flexDirection: "column", alignItems: "center", padding: "1.5rem" }}>
         <svg viewBox="0 0 660 280" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxHeight: 280 }}>
           <rect width="660" height="280" fill={bg}/>
@@ -178,15 +161,16 @@ export function Blog1Content() {
         </table>
       </div>
 
-      {p(<>One thing the table does not say: Stammer.ai is an agent <em>builder</em>, not a dashboard layer. If your stack already lives on Vapi, Retell, Make, or n8n, Stammer cannot report on it. Different product, different job.</>)}
+      {p(<>A couple things the table doesn't show. VoiceAIWrapper and VoiceAI Portal are both solid for what they do — but they're voice-only. If any part of your stack runs on <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n</Link> or <Link href="/blog/make-com-white-label-pricing-automation-agencies" style={{ color: accent }}>Make</Link>, neither platform can represent that work in a client-facing view.</>)}
+      {p(<>Stammer.ai is a different product entirely. It builds and resells agents using its own infrastructure. If you already built your stack on Vapi, Retell, Make, or n8n, Stammer can't generate a passthrough dashboard for those platforms. It's not a competitor — it's a different starting point.</>)}
 
-      {/* ── SECTION 4 — WHO IS THIS FOR ── */}
-      {h2("Which type of agency is this actually for?")}
+      {/* ── SECTION 5 — WHO IS THIS FOR ── */}
+      {h2("who-needs-this", "Which type of agency actually needs a white-label dashboard?")}
 
       {[
-        { icon: "🎙️", title: "Voice AI agencies (Vapi or Retell)", body: "You built AI phone receptionists, sales dialers, or appointment setters. Your clients have zero visibility into call outcomes. A branded portal showing call volume, sentiment, and savings turns your invisible work into a product they pay monthly to access — and reduces churn because clients who see ROI weekly do not cancel." },
-        { icon: "⚙️", title: "Workflow automation agencies (Make or n8n)", body: "You built a lead qualification workflow or CRM enrichment pipeline. It runs quietly and your clients have no idea what it is doing. A workflow dashboard shows execution counts, failure rates, and time saved — turning a one-time project into a recurring retainer. This gap is completely open. Nobody else serves n8n agencies with a branded client portal." },
-        { icon: "🔀", title: "Mixed-stack agencies", body: "You use Vapi for voice and n8n for automation. One portal, one login, your brand, one monthly fee. Getflowetic is the only platform that aggregates voice and workflow data in a single white-labeled view." },
+        { icon: "🎙️", title: "Voice AI agencies (Vapi or Retell)", body: "Your clients have zero visibility into call outcomes right now. A branded portal showing call volume, sentiment, and estimated savings turns your invisible work into a product they pay monthly to access. It's also your strongest retention tool — clients who see their ROI every week don't cancel." },
+        { icon: "⚙️", title: "Workflow automation agencies (Make or n8n)", body: "You built automations that run quietly in the background. Your clients have no idea they exist. A workflow dashboard turns that silent work into a retained service with a dashboard fee attached. This gap is completely open — nobody else serves n8n or Make agencies with a branded client portal." },
+        { icon: "🔀", title: "Mixed-stack agencies", body: "You use Vapi for voice and n8n for automation. Your clients deserve one portal — one login, one branded view, one monthly payment. This is the gap in the market right now." },
       ].map(({ icon, title, body }) => (
         <div key={title} style={{ background: card, border: `1px solid ${border}`, borderRadius: 10, padding: "1.4rem 1.6rem", margin: "1.25rem 0", borderLeft: `4px solid ${accent}` }}>
           <p style={{ ...sans, fontWeight: 700, fontSize: "0.9rem", color: accent, marginBottom: "0.5rem" }}>{icon} {title}</p>
@@ -194,40 +178,11 @@ export function Blog1Content() {
         </div>
       ))}
 
-      {/* ── SECTION 5 — ROI ── */}
-      {h2("What is the ROI of a branded client portal?")}
-      {p("Run this before you decide it is not worth the cost. It takes 60 seconds.")}
+      {p(<>Not sure which pricing model to use for your portal? I wrote a separate guide on <Link href="/blog/how-to-sell-ai-automation-saas-recurring-revenue" style={{ color: accent }}>how to sell AI automation as a SaaS product</Link> that covers the exact math for each agency type.</>)}
 
-      <figure style={{ margin: "2rem 0", borderRadius: 14, overflow: "hidden", background: card, border: `1px solid ${border}`, display: "flex", flexDirection: "column", alignItems: "center", padding: "1.5rem" }}>
-        <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxHeight: 220 }}>
-          <rect width="560" height="220" fill="#fff"/>
-          <rect x="274" y="60" width="12" height="110" rx="4" fill={accentBorder} stroke={accent} strokeWidth="1.5"/>
-          <rect x="230" y="168" width="100" height="12" rx="6" fill={accent}/>
-          <line x1="100" y1="85" x2="460" y2="108" stroke={textPrimary} strokeWidth="4" strokeLinecap="round"/>
-          <ellipse cx="107" cy="115" rx="50" ry="12" fill="#f5f3ff" stroke={textPrimary} strokeWidth="2"/>
-          <line x1="107" y1="85" x2="107" y2="115" stroke={textPrimary} strokeWidth="2"/>
-          <ellipse cx="107" cy="102" rx="22" ry="7" fill={yellow} stroke={textPrimary} strokeWidth="1.5"/>
-          <rect x="85" y="86" width="44" height="16" fill={yellow} stroke={textPrimary} strokeWidth="1.5"/>
-          <ellipse cx="107" cy="86" rx="22" ry="7" fill="#fef9c3" stroke={textPrimary} strokeWidth="1.5"/>
-          <text x="107" y="93" textAnchor="middle" fontFamily="'DM Mono',monospace" fontSize="9" fontWeight="700" fill={textPrimary}>$99/mo</text>
-          <ellipse cx="453" cy="150" rx="60" ry="13" fill="#f5f3ff" stroke={textPrimary} strokeWidth="2"/>
-          <line x1="453" y1="108" x2="453" y2="150" stroke={textPrimary} strokeWidth="2"/>
-          <ellipse cx="453" cy="120" rx="36" ry="30" fill={yellow} stroke={textPrimary} strokeWidth="2"/>
-          <text x="453" y="118" textAnchor="middle" fontFamily="'DM Mono',monospace" fontSize="10" fontWeight="700" fill={textPrimary}>$745</text>
-          <text x="453" y="131" textAnchor="middle" fontFamily="'DM Mono',monospace" fontSize="9" fill={textSecondary}>/mo</text>
-          <ellipse cx="453" cy="90" rx="10" ry="6" fill={accent}/>
-          <rect x="490" y="130" width="46" height="42" rx="10" fill={accent}/>
-          <circle cx="513" cy="120" r="18" fill={accent}/>
-          <circle cx="506" cy="118" r="4" fill={accentLight}/>
-          <circle cx="520" cy="118" r="4" fill={accentLight}/>
-          <path d="M506 128 Q513 134 520 128" stroke={accentLight} strokeWidth="2" fill="none" strokeLinecap="round"/>
-          <text x="390" y="75" fontSize="16" fill={yellow}>✦</text>
-          <text x="430" y="60" fontSize="11" fill="#86efac">✦</text>
-        </svg>
-        <figcaption style={{ ...sans, fontSize: "0.78rem", color: textMuted, fontStyle: "italic", marginTop: "0.75rem", textAlign: "center" }}>
-          $99/month platform cost. $745/month in portal revenue from 5 clients.
-        </figcaption>
-      </figure>
+      {/* ── SECTION 6 — ROI ── */}
+      {h2("roi", "What's the ROI of a branded client portal?")}
+      {p("Run this before you decide it's not worth the cost. It takes 60 seconds and it changes the conversation.")}
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem", margin: "2rem 0" }}>
         {[
@@ -243,75 +198,39 @@ export function Blog1Content() {
         ))}
       </div>
 
-      {p("The portal does not just cover its own cost. It creates a recurring revenue line on top of the retainer you are already charging. Clients who log in to a dashboard every week do not cancel at renewal.")}
+      {p("Here's how the voice agency math works: Getflowetic Starter at $99/month. Charge each of your 5 clients $149/month for portal access. Monthly portal revenue: $745. Net after platform cost: $646/month — $7,752 per year from portals alone.")}
+      {p("The portal doesn't just cover its own cost. It creates a recurring revenue line on top of the retainer you're already charging. And clients who log into a dashboard every week don't cancel at renewal.")}
 
-      {/* ── SECTION 6 — CUSTOM BUILD ── */}
-      {h2("A note on building your own")}
-
-      <figure style={{ margin: "2rem 0", borderRadius: 14, overflow: "hidden", background: card, border: `1px solid ${border}`, display: "flex", flexDirection: "column", alignItems: "center", padding: "1.5rem" }}>
-        <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", maxHeight: 200 }}>
-          <rect width="560" height="200" fill="#fff"/>
-          <rect x="60" y="175" width="440" height="6" rx="3" fill={border}/>
-          <rect x="195" y="145" width="90" height="30" rx="5" fill={accentLight} stroke={accent} strokeWidth="2" transform="rotate(-3,240,160)"/>
-          <text x="240" y="165" textAnchor="middle" fontFamily="'DM Mono',monospace" fontSize="9" fill={accent}>{"{ API }"}</text>
-          <rect x="200" y="115" width="80" height="30" rx="5" fill="#ddd6fe" stroke={accent} strokeWidth="2" transform="rotate(4,240,130)"/>
-          <text x="240" y="134" textAnchor="middle" fontFamily="'DM Mono',monospace" fontSize="9" fill={accent}>webhook</text>
-          <rect x="205" y="85" width="72" height="30" rx="5" fill={accentLight} stroke={accent} strokeWidth="2" transform="rotate(-5,241,100)"/>
-          <text x="241" y="104" textAnchor="middle" fontFamily="'DM Mono',monospace" fontSize="9" fill={accent}>billing</text>
-          <rect x="210" y="55" width="64" height="30" rx="5" fill="#ddd6fe" stroke={accent} strokeWidth="2" transform="rotate(6,242,70)"/>
-          <text x="242" y="74" textAnchor="middle" fontFamily="'DM Mono',monospace" fontSize="9" fill={accent}>dashboard</text>
-          <circle cx="150" cy="110" r="22" fill="#fff" stroke={textPrimary} strokeWidth="2"/>
-          <circle cx="143" cy="106" r="3" fill={textPrimary}/>
-          <circle cx="157" cy="106" r="3" fill={textPrimary}/>
-          <path d="M143 118 Q150 113 157 118" stroke={textPrimary} strokeWidth="2" fill="none"/>
-          <ellipse cx="165" cy="100" rx="4" ry="6" fill="#bfdbfe"/>
-          <rect x="128" y="132" width="44" height="44" rx="10" fill="#fff" stroke={textPrimary} strokeWidth="2"/>
-          <rect x="390" y="50" width="100" height="80" rx="6" fill="#fff" stroke={textPrimary} strokeWidth="2"/>
-          <rect x="390" y="50" width="100" height="22" rx="6" fill={red}/>
-          <text x="440" y="66" textAnchor="middle" fontFamily="'DM Sans',sans-serif" fontWeight="700" fontSize="10" fill="#fff">6 MONTHS</text>
-          <text x="440" y="87" textAnchor="middle" fontFamily="'DM Sans',sans-serif" fontWeight="700" fontSize="12" fill={textPrimary}>LATER</text>
-          <rect x="320" y="140" width="40" height="36" rx="8" fill={accent}/>
-          <circle cx="340" cy="132" r="16" fill={accent}/>
-          <circle cx="334" cy="130" r="3.5" fill={accentLight}/>
-          <circle cx="346" cy="130" r="3.5" fill={accentLight}/>
-          <path d="M334 140 Q340 136 346 140" stroke={accentLight} strokeWidth="2" fill="none"/>
-          <text x="80" y="80" fontSize="18" fill={yellow} opacity="0.7">$</text>
-          <text x="95" y="55" fontSize="14" fill={yellow} opacity="0.5">$</text>
-          <text x="65" y="55" fontSize="11" fill={yellow} opacity="0.4">$</text>
-        </svg>
-        <figcaption style={{ ...sans, fontSize: "0.78rem", color: textMuted, fontStyle: "italic", marginTop: "0.75rem", textAlign: "center" }}>
-          Custom dashboards look affordable on paper. Then you add six months of developer time.
-        </figcaption>
-      </figure>
-
-      {p("It comes up. Every agency at some point considers building their own dashboard.")}
+      {/* ── SECTION 7 — CUSTOM BUILD ── */}
+      {h2("custom-build", "Should you build your own dashboard?")}
+      {p("It comes up. Every agency at some point thinks about building a custom dashboard.")}
       {p("A realistic build costs $30,000–$80,000. Ongoing maintenance runs $500–$2,000 per month. And every time Vapi, Retell, or Make updates their API — which all three do regularly — your dashboard breaks and a developer fixes it on your dime.")}
-      {p("At $99/month, Getflowetic pays for itself the moment one client pays $149 for portal access. Build custom eventually — when you have 50+ clients, specific requirements no platform covers, and a developer on staff. Not while you are building recurring revenue from zero.")}
+      {p("At $99/month, a purpose-built platform pays for itself the moment one client pays $149 for portal access. Build custom eventually — when you've got 50+ clients and specific requirements no platform covers. Not while you're building recurring revenue from scratch.")}
 
       <blockquote style={{ borderLeft: `3px solid ${accent}`, margin: "2rem 0", padding: "0.75rem 0 0.75rem 1.5rem", color: "#444", fontStyle: "italic", fontSize: "1.05rem" }}>
-        The question is not &quot;can we build this?&quot; It&apos;s &quot;should we be building this, or selling clients right now?&quot;
+        The question isn&apos;t &quot;can we build this?&quot; It&apos;s &quot;should we be building this right now, or selling clients?&quot;
       </blockquote>
 
-      {/* ── SECTION 7 — DECISION FRAMEWORK ── */}
-      {h2("The short decision framework")}
-      {p("Three questions. Answer them and you will know exactly which path to take.")}
+      {/* ── SECTION 8 — DECISION FRAMEWORK ── */}
+      {h2("decision", "How do you decide which platform to use?")}
+      {p("Three questions. Answer them and you'll know exactly which path to take.")}
       {[
-        ["Do you have Make or n8n in your stack?", "Getflowetic is your only option. Every other platform is voice-only."],
+        ["Do you have Make or n8n in your stack?", "Getflowetic is your only option right now. Every other platform is voice-only."],
         ["Are you voice-only and want to charge clients for portal access?", "VoiceAIWrapper at $79/month gives you billing plus branding. VoiceAI Portal at $29/month is analytics-only — no billing."],
-        ["Do you want to build agents from scratch and resell them?", "That is Stammer's use case. Different product, different starting point."],
+        ["Do you want to build agents from scratch and resell them?", "That's Stammer's use case. Different product, different starting point."],
       ].map(([q, a]) => (
         p(<><strong>{q}</strong> {a}</>, {})
       ))}
 
       {/* ── FAQ ── */}
-      {h2("Frequently asked questions")}
+      {h2("faq", "Frequently asked questions")}
       <div style={{ marginTop: "1rem" }}>
         {[
-          ["What is the best white-label AI agent dashboard for automation agencies?", "Getflowetic is the only platform that supports both voice (Vapi, Retell) and workflow (Make, n8n) analytics in a single branded client portal. For voice-only agencies, VoiceAIWrapper and VoiceAI Portal are strong alternatives at lower price points."],
-          ["What should a white-label AI client dashboard include?", "Complete branding with your domain — no third-party name visible anywhere — real-time platform data, ROI metrics in plain language, Stripe billing so clients pay you directly, and setup under 10 minutes without a developer."],
+          ["What is the best white-label AI agent dashboard for automation agencies?", "Getflowetic — it's the only platform that supports both voice (Vapi, Retell) and workflow (Make, n8n) analytics in a single branded client portal. For voice-only agencies, VoiceAIWrapper and VoiceAI Portal are strong alternatives at lower price points."],
+          ["What should a white-label AI client dashboard include?", "Five things: complete branding with your domain (no third-party name visible anywhere), real-time platform data, ROI metrics in plain language, Stripe billing so clients pay you directly, and setup under 10 minutes without a developer."],
           ["How much does a white-label AI dashboard cost?", "From $29/month for voice-only tools up to $80,000+ to build custom. Getflowetic starts at $99/month for voice and workflow platforms combined. The platform pays for itself with one paying client."],
-          ["Can I use Vapi and Make in the same portal?", "Yes, with Getflowetic. It is the only platform combining voice and workflow analytics in a single white-labeled client view."],
-          ["Does it include Stripe billing?", "Getflowetic and VoiceAIWrapper both include Stripe Connect — clients pay you directly. VoiceAI Portal does not include native billing."],
+          ["Can I use Vapi and Make in the same portal?", "Yes, with Getflowetic. It's the only platform that combines voice and workflow analytics in a single white-labeled client view. VoiceAIWrapper and VoiceAI Portal are voice-only."],
+          ["Does it include Stripe billing?", "Getflowetic and VoiceAIWrapper both include Stripe Connect — clients pay you directly. VoiceAI Portal doesn't include native billing. Stammer uses its own internal billing for agent reselling."],
           ["How fast is setup?", "Under 60 seconds with Getflowetic once your platforms are connected. Under 10 minutes with VoiceAI Portal for voice portals. Weeks to months for a custom build."],
         ].map(([q, a]) => (
           <div key={q} style={{ borderBottom: `1px solid ${border}`, padding: "1.25rem 0" }}>
@@ -323,17 +242,9 @@ export function Blog1Content() {
 
       <hr style={{ border: "none", borderTop: `1px solid ${border}`, margin: "3rem 0" }}/>
 
-      {/* ── FOOTER CTA ── */}
-      <div style={{ background: calloutBg, border: `1.5px solid ${accentBorder}`, borderRadius: 12, padding: "1.5rem 1.75rem", display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
-        <span style={{ fontSize: "1.6rem", flexShrink: 0, marginTop: "0.1rem" }}>🚀</span>
-        <div>
-          <p style={{ ...sans, fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.35rem", color: accent }}>Ready to turn your AI stack into a recurring revenue product?</p>
-          <p style={{ ...sans, fontSize: "0.9rem", marginBottom: "0.75rem", color: "#444" }}>Connect your existing Vapi, Retell, Make, or n8n setup and generate a branded client portal in 60 seconds. 7-day free trial, no credit card required.</p>
-          <Link href="https://app.getflowetic.com/auth" style={{ ...sans, display: "inline-block", fontSize: "0.82rem", fontWeight: 700, background: accent, color: "white", padding: "0.45rem 1rem", borderRadius: 6, textDecoration: "none" }}>
-            Start Free Trial →
-          </Link>
-        </div>
-      </div>
+      {/* ── CLOSING — GOJIBERRY-STYLE INLINE MENTION ── */}
+      {p("The bottom line: if you're running an AI automation agency and your clients can't see what you're doing, you're leaving money on the table every single month. A branded portal doesn't just reduce churn — it creates a new revenue line you probably aren't charging for yet.")}
+      {p(<>If you want to skip the custom build and start charging clients this week, <Link href="https://app.getflowetic.com/auth" style={{ color: accent, textDecoration: "underline", textUnderlineOffset: "3px" }}>Getflowetic has a free trial</Link> — no card required.</>)}
 
     </div>
   );

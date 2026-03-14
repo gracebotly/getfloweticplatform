@@ -191,22 +191,8 @@ export default async function BlogPostPage({
           <MDXRemote source={post.content} components={mdxComponents} />
         </div>
 
-        {/* CTA Box */}
-        <div className="mt-16 rounded-2xl border bg-primary/5 p-8 md:p-10 text-center">
-          <h3 className="text-xl font-bold text-foreground mb-2">
-            Ready to white-label your AI automations?
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-            Connect your Vapi, Retell, Make, or n8n workflows and deliver
-            branded client portals in 60 seconds.
-          </p>
-          <Link
-            href="https://app.getflowetic.com/auth"
-            className="inline-flex items-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
-          >
-            Start Free — No Card Required
-          </Link>
-        </div>
+        {/* Clean divider before related posts */}
+        <div className="mt-16 mb-16 border-t" />
 
         {/* Related Posts */}
         {related.length > 0 && (
