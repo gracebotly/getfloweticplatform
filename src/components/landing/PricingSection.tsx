@@ -77,7 +77,7 @@ export const PricingSection = () => {
                 <span className="text-5xl font-bold text-foreground">$149</span>
                 <span className="text-muted-foreground">/month</span>
               </div>
-              <Link href="https://app.getflowetic.com/auth" className="block mt-4">
+              <Link href="https://app.getflowetic.com/signup" className="block mt-4">
                 <Button variant="outline" className="w-full rounded-full" size="lg">
                   Free →
                 </Button>
@@ -114,7 +114,7 @@ export const PricingSection = () => {
                 <span className="text-5xl font-bold text-primary-foreground">$299</span>
                 <span className="text-primary-foreground/70">/month</span>
               </div>
-              <Link href="https://app.getflowetic.com/auth" className="block mt-4">
+              <Link href="https://app.getflowetic.com/signup" className="block mt-4">
                 <Button variant="secondary" className="w-full rounded-full" size="lg">
                   Free →
                 </Button>

@@ -60,12 +60,12 @@ export const LandingNavbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Link href="https://app.getflowetic.com/auth">
+            <Link href="https://app.getflowetic.com/login">
               <Button variant="ghost" size="sm">
                 Login
               </Button>
             </Link>
-            <Link href="https://app.getflowetic.com/auth">
+            <Link href="https://app.getflowetic.com/signup">
               <Button size="sm" className="rounded-full px-6">
                 Try for Free
               </Button>
@@ -102,12 +102,12 @@ export const LandingNavbar = () => {
               </a>
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t">
-              <Link href="https://app.getflowetic.com/auth">
+              <Link href="https://app.getflowetic.com/login">
                 <Button variant="ghost" className="w-full">
                   Login
                 </Button>
               </Link>
-              <Link href="https://app.getflowetic.com/auth">
+              <Link href="https://app.getflowetic.com/signup">
                 <Button className="w-full rounded-full">Try for Free</Button>
               </Link>
             </div>

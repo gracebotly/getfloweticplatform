@@ -194,7 +194,7 @@ export default async function BlogPostPage({
             branded client portals in 60 seconds.
           </p>
           <Link
-            href="https://app.getflowetic.com/auth"
+            href="https://app.getflowetic.com/signup"
             className="inline-flex items-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
           >
             Start Free — No Card Required

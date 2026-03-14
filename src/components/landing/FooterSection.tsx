@@ -86,7 +86,7 @@ export const FooterSection = () => {
             <p className="text-background/70 mb-8 max-w-lg mx-auto">
               Connect your first platform, get a white-labeled client portal, and start charging — in under 60 seconds.
             </p>
-            <Link href="https://app.getflowetic.com/auth">
+            <Link href="https://app.getflowetic.com/signup">
               <Button size="lg" variant="secondary" className="rounded-full px-8">
                 Start Free Trial
               </Button>

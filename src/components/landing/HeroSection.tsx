@@ -111,7 +111,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col items-center mt-10"
         >
-          <Link href="https://app.getflowetic.com/auth">
+          <Link href="https://app.getflowetic.com/signup">
             <Button size="lg" className="rounded-full px-8 text-base">
               Start Free — No Card Required
             </Button>
