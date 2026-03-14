@@ -5,9 +5,11 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { ProductCallout } from "@/components/blog/ProductCallout";
+import { Blog1Content } from "@/components/blog/Blog1Content";
 
 const mdxComponents = {
   ProductCallout,
+  Blog1Content,
 };
 
 // SSG — pre-render every post at build time
