@@ -1,8 +1,8 @@
 ---
-title: "Can You White Label n8n? A Guide for AI Automation Agencies"
-description: "Yes, you can white label n8n workflows for clients — here's exactly how agencies are doing it, what the licensing allows, and how to charge recurring revenue for it."
+title: "Can You White Label n8n? How Agencies Build Recurring Revenue from Workflows"
+description: "n8n's embed license costs $50K/year. Here's how small agencies white-label n8n workflows for clients and charge recurring revenue without it."
 slug: can-you-white-label-n8n-agency-recurring-revenue
-publishedAt: "2026-03-21"
+publishedAt: "2026-03-26"
 author: Getflowetic Team
 category: Platform Guides
 keywords:
@@ -10,18 +10,43 @@ keywords:
   - n8n white label
   - n8n white label pricing
   - n8n white label license
-  - white label n8n agency
-readTime: 7 min read
+  - n8n white label dashboard
+  - n8n agency client dashboard
+  - n8n client portal agency
+  - n8n recurring revenue agency
+  - how to white label n8n workflows
+  - white label n8n
+ogImage: /blog/can-you-white-label-n8n-agency-recurring-revenue.png
+readTime: 9 min read
 faq:
   - question: "Can you white label n8n?"
-    answer: "Yes. n8n's fair-code license allows agencies to run n8n on their own infrastructure and present it under their own brand to clients. You cannot resell n8n's cloud product as your own, but self-hosted deployments can be branded."
-  - question: "What is n8n white label pricing?"
-    answer: "n8n's self-hosted version is free under the fair-code license. Agencies typically charge clients $200–800/month for a fully managed, white-labeled n8n automation service, including setup, maintenance, and a branded client dashboard."
-  - question: "How do AI automation agencies charge for n8n services?"
-    answer: "Agencies package n8n as a managed automation service with a branded client portal showing workflow performance, task counts, and ROI metrics. Getflowetic generates these branded dashboards automatically from your n8n instance."
-  - question: "What is the difference between n8n self-hosted and n8n cloud for agencies?"
-    answer: "Self-hosted gives you full control over branding, data residency, and pricing. n8n Cloud is managed by n8n but cannot be white-labeled. Agencies who want to charge recurring revenue should use self-hosted n8n."
-  - question: "How long does it take to set up a white-label n8n client dashboard?"
-    answer: "With Getflowetic, you can connect your n8n instance and generate a branded client portal in under 60 seconds. Branding, workflow selection, and Stripe billing are all handled in the setup wizard."
+    answer: "Technically yes, but n8n's official white-label path is an enterprise embed license that costs around $50,000 per year. For most small and mid-size agencies, the practical approach is adding a branded client dashboard layer on top of your n8n instance rather than white-labeling the n8n editor itself."
+  - question: "What does n8n's white label license actually include?"
+    answer: "The n8n embed license lets you remove n8n branding, host the editor for end users, and integrate n8n into your own product. It includes unlimited instances, workflows, and executions. But it requires a custom sales process and is priced for companies with significant revenue."
+  - question: "How much does n8n white label pricing cost?"
+    answer: "The n8n embed license costs approximately $50,000 per year based on community reports. n8n doesn't publish embed pricing publicly. You need to contact their sales team for a custom quote based on your execution volume."
+  - question: "How do n8n agencies build recurring revenue without the enterprise embed license?"
+    answer: "Agencies self-host n8n for free, build workflows for clients, then add a branded client dashboard using a tool like Getflowetic. The client sees a portal with your logo showing workflow performance and ROI. You charge $149 to $299 per month for dashboard access. The client never touches n8n directly."
+  - question: "How do you give clients a branded n8n dashboard?"
+    answer: "Connect your n8n instance to Getflowetic, select the workflows you want to expose, add your branding and Stripe billing, and share a magic link with your client. Setup takes under 60 seconds. The client sees a white-labeled portal with execution data, success rates, and estimated ROI."
+  - question: "What is the best n8n white label solution for small agencies?"
+    answer: "Getflowetic is the only platform purpose-built for agencies running n8n workflows. It generates branded client portals with real-time execution data and Stripe billing. No embed license required. VoiceAIWrapper and VoiceAI Portal are voice-only and don't support n8n."
+  - question: "Can I use n8n commercially without the embed license?"
+    answer: "Yes, but only for internal business purposes. n8n's Sustainable Use License allows free self-hosted use for your own company's operations. The moment you expose n8n's interface to external users or resell it as part of a product, you need the embed license. A dashboard layer that reads n8n data via API is a separate product, not a redistribution of n8n."
+howto:
+  name: "How to white-label n8n workflows for agency clients"
+  description: "Set up a branded client dashboard for your n8n automation workflows in under 5 minutes using Getflowetic."
+  steps:
+    - name: "Self-host n8n and build your workflows"
+      text: "Deploy n8n on your own server using Docker or a VPS provider. Build the automation workflows your clients need. This is the foundation. n8n's self-hosted Community Edition is free with unlimited executions."
+    - name: "Connect your n8n instance to Getflowetic"
+      text: "In Getflowetic's setup wizard, enter your n8n instance URL and API key. Getflowetic connects to the n8n API and pulls your workflow and execution data automatically."
+    - name: "Brand the portal with your agency identity"
+      text: "Upload your logo, set your brand colors, and choose a portal name. The client will see your agency's branding everywhere. No Getflowetic or n8n branding is visible."
+    - name: "Add Stripe billing so clients pay you directly"
+      text: "Connect your Stripe account through Stripe Connect. Set your monthly price. When clients access the portal, they pay you directly. You set the margin."
+    - name: "Share the magic link with your client"
+      text: "Generate a secure magic link for your client. They click it, see a branded dashboard showing their workflow performance, execution counts, success rates, and estimated ROI. No login credentials needed."
 ---
-*Content coming soon — this guide covers n8n white labeling options, licensing, agency pricing strategies, and how to deliver branded automation dashboards to clients.*
+
+<Blog2Content />

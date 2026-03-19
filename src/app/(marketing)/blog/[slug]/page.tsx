@@ -1,3 +1,6 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -6,10 +9,23 @@ import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { ProductCallout } from "@/components/blog/ProductCallout";
 import { Blog1Content } from "@/components/blog/Blog1Content";
+import { Blog2Content } from "@/components/blog/Blog2Content";
+
+type BlogHowToStep = {
+  name: string;
+  text: string;
+};
+
+type BlogHowTo = {
+  name: string;
+  description: string;
+  steps: BlogHowToStep[];
+};
 
 const mdxComponents = {
   ProductCallout,
   Blog1Content,
+  Blog2Content,
 };
 
 // SSG — pre-render every post at build time
@@ -65,6 +81,14 @@ export default async function BlogPostPage({
     .filter((p) => p.slug !== slug && p.category === post.category)
     .slice(0, 2);
 
+  const blogDir = path.join(process.cwd(), "src", "content", "blog");
+  const rawPostPath = [path.join(blogDir, `${slug}.mdx`), path.join(blogDir, `${slug}.md`)].find((candidate) =>
+    fs.existsSync(candidate)
+  );
+  const rawPostData = rawPostPath
+    ? (matter(fs.readFileSync(rawPostPath, "utf-8")).data as { howto?: BlogHowTo })
+    : {};
+
   // FAQPage JSON-LD — rendered from frontmatter FAQ array
   const faqSchema =
     post.faq.length > 0
@@ -78,6 +102,24 @@ export default async function BlogPostPage({
               "@type": "Answer",
               text: item.answer,
             },
+          })),
+        }
+      : null;
+
+  // HowTo JSON-LD — rendered from frontmatter howto object (tutorial posts only)
+  const howtoData = rawPostData.howto;
+  const howtoSchema =
+    howtoData && howtoData.steps?.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: howtoData.name,
+          description: howtoData.description,
+          step: howtoData.steps.map((s: { name: string; text: string }, i: number) => ({
+            "@type": "HowToStep",
+            position: i + 1,
+            name: s.name,
+            text: s.text,
           })),
         }
       : null;
@@ -124,6 +166,12 @@ export default async function BlogPostPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {howtoSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howtoSchema) }}
         />
       )}
 
