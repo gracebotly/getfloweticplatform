@@ -10,6 +10,7 @@ import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { ProductCallout } from "@/components/blog/ProductCallout";
 import { Blog1Content } from "@/components/blog/Blog1Content";
 import { Blog2Content } from "@/components/blog/Blog2Content";
+import { Blog3Content } from "@/components/blog/Blog3Content";
 
 type BlogHowToStep = {
   name: string;
@@ -26,6 +27,7 @@ const mdxComponents = {
   ProductCallout,
   Blog1Content,
   Blog2Content,
+  Blog3Content,
 };
 
 // SSG — pre-render every post at build time
