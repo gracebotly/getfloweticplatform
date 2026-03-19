@@ -57,7 +57,7 @@ export const IntegrationsSection = () => {
               <p className="text-muted-foreground mb-8">
                 Getflowetic connects to the four platforms AI agencies use most. Your existing agents and workflows become client-ready products — nothing needs to be rebuilt.
               </p>
-              <Link href="https://app.getflowetic.com/auth">
+              <Link href="https://app.getflowetic.com/signup">
                 <Button className="rounded-full">Start Free Trial</Button>
               </Link>
               <p className="mt-4 text-sm text-muted-foreground">
