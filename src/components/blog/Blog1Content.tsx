@@ -67,7 +67,7 @@ export function Blog1Content() {
       {p("You build a Vapi voice receptionist that handles 400 calls a month for a dental practice. Your client has no idea. They see a quieter front desk and assume things are slow. They cancel at month three.")}
       {p("You build an n8n workflow that qualifies and enriches leads before they hit the CRM. Your client just sees cleaner data. They think that's normal. They don't renew.")}
       {p("This isn't a product problem. It's a visibility problem. The work is happening. The value is real. But invisible value doesn't survive a budget conversation. A branded portal turns your backend into something your client opens every Monday morning. That's what keeps them paying.")}
-      {p(<>If you're running <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n workflows for clients</Link> or <Link href="/blog/vapi-white-label-dashboard-ai-agencies" style={{ color: accent }}>Vapi voice agents</Link>, this is the gap you're probably already feeling.</>)}
+      {p(<>If you're running <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n workflows for clients</Link> or Vapi voice agents, this is the gap you're probably already feeling.</>)}
 
       {/* ── SECTION 3 ── */}
       {h2("portal-requirements", "What should a white-label AI client dashboard include?")}
@@ -134,7 +134,7 @@ export function Blog1Content() {
         </div>
       ))}
 
-      {p(<>Not sure which pricing model to use for your portal? I wrote a separate guide on <Link href="/blog/how-to-sell-ai-automation-saas-recurring-revenue" style={{ color: accent }}>how to sell AI automation as a SaaS product</Link> that covers the exact math for each agency type.</>)}
+      {p("Not sure which pricing model to use for your portal? The short version: charge enough that one paying client covers the tool cost, and every client after that is margin. Most agencies land between $99 and $299/month per portal depending on their niche.")}
 
       {/* ── SECTION 7 — CUSTOM BUILD ── */}
       {h2("custom-build", "Should you build your own dashboard?")}

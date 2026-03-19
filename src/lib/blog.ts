@@ -18,6 +18,7 @@ export interface BlogPost {
   ogImage?: string;
   readTime?: string;
   faq: BlogFAQ[];
+  draft: boolean;
   content: string;
 }
 
@@ -30,24 +31,27 @@ export function getAllPosts(): BlogPost[] {
     .readdirSync(BLOG_DIR)
     .filter((f) => f.endsWith(".mdx") || f.endsWith(".md"));
 
-  const posts = files.map((filename) => {
-    const filePath = path.join(BLOG_DIR, filename);
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(raw);
-    return {
-      title: data.title ?? "",
-      description: data.description ?? "",
-      slug: data.slug ?? filename.replace(/\.mdx?$/, ""),
-      publishedAt: data.publishedAt ?? "",
-      author: data.author ?? "Getflowetic Team",
-      category: data.category ?? "General",
-      keywords: data.keywords ?? [],
-      ogImage: data.ogImage,
-      readTime: data.readTime,
-      faq: data.faq ?? [],
-      content,
-    } as BlogPost;
-  });
+  const posts = files
+    .map((filename) => {
+      const filePath = path.join(BLOG_DIR, filename);
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const { data, content } = matter(raw);
+      return {
+        title: data.title ?? "",
+        description: data.description ?? "",
+        slug: data.slug ?? filename.replace(/\.mdx?$/, ""),
+        publishedAt: data.publishedAt ?? "",
+        author: data.author ?? "Getflowetic Team",
+        category: data.category ?? "General",
+        keywords: data.keywords ?? [],
+        ogImage: data.ogImage,
+        readTime: data.readTime,
+        faq: data.faq ?? [],
+        draft: data.draft === true,
+        content,
+      } as BlogPost;
+    })
+    .filter((post) => !post.draft);
 
   return posts.sort(
     (a, b) =>
