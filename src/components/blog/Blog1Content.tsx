@@ -32,7 +32,6 @@ export function Blog1Content() {
     { id: "portal-requirements", label: "What should a client portal include?" },
     { id: "comparison", label: "How do the options compare?" },
     { id: "who-needs-this", label: "Which agencies need this?" },
-    { id: "roi", label: "What's the ROI?" },
     { id: "custom-build", label: "Should you build your own?" },
     { id: "decision", label: "Quick decision framework" },
     { id: "faq", label: "FAQ" },
@@ -136,27 +135,6 @@ export function Blog1Content() {
       ))}
 
       {p(<>Not sure which pricing model to use for your portal? I wrote a separate guide on <Link href="/blog/how-to-sell-ai-automation-saas-recurring-revenue" style={{ color: accent }}>how to sell AI automation as a SaaS product</Link> that covers the exact math for each agency type.</>)}
-
-      {/* ── SECTION 6 — ROI ── */}
-      {h2("roi", "What's the ROI of a branded client portal?")}
-      {p("Run this before you decide it's not worth the cost. It takes 60 seconds and it changes the conversation.")}
-
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem", margin: "2rem 0" }}>
-        {[
-          { label: "Voice agency · 5 clients", number: "$646", sub: "net/mo · $7,752/yr\n$149/mo × 5 clients" },
-          { label: "n8n agency · 10 clients", number: "$691", sub: "net/mo · $8,292/yr\n$99/mo × 10 clients" },
-          { label: "Mixed stack · 15 clients", number: "$1,586", sub: "net/mo · $19,032/yr\n8 voice + 7 workflow" },
-        ].map(({ label, number, sub }) => (
-          <div key={label} style={{ background: card, border: `1px solid ${border}`, borderRadius: 10, padding: "1.25rem 1.4rem", borderTop: `3px solid ${accent}` }}>
-            <div style={{ ...mono, fontSize: "0.68rem", textTransform: "uppercase" as const, letterSpacing: "0.05em", color: textMuted, marginBottom: "0.4rem" }}>{label}</div>
-            <div style={{ ...sans, fontSize: "1.5rem", fontWeight: 700, color: accent }}>{number}<span style={{ fontSize: "1rem", fontWeight: 400, color: textMuted }}>/mo</span></div>
-            <div style={{ ...sans, fontSize: "0.78rem", color: textSecondary, marginTop: "0.2rem", whiteSpace: "pre-line" as const }}>{sub}</div>
-          </div>
-        ))}
-      </div>
-
-      {p("Here's how the voice agency math works. Getflowetic Starter at $99/month. Charge each of your 5 clients $149/month for portal access. Monthly portal revenue: $745. Net after platform cost: $646/month, or $7,752 per year from portals alone.")}
-      {p("The portal doesn't just cover its own cost. It creates a recurring revenue line on top of the retainer you're already charging. And clients who log into a dashboard every week don't cancel at renewal.")}
 
       {/* ── SECTION 7 — CUSTOM BUILD ── */}
       {h2("custom-build", "Should you build your own dashboard?")}
