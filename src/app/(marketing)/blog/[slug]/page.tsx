@@ -1,9 +1,34 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
+import { ProductCallout } from "@/components/blog/ProductCallout";
+import { Blog1Content } from "@/components/blog/Blog1Content";
+import { Blog2Content } from "@/components/blog/Blog2Content";
+import { Blog3Content } from "@/components/blog/Blog3Content";
+
+type BlogHowToStep = {
+  name: string;
+  text: string;
+};
+
+type BlogHowTo = {
+  name: string;
+  description: string;
+  steps: BlogHowToStep[];
+};
+
+const mdxComponents = {
+  ProductCallout,
+  Blog1Content,
+  Blog2Content,
+  Blog3Content,
+};
 
 // SSG — pre-render every post at build time
 export async function generateStaticParams() {
@@ -58,6 +83,14 @@ export default async function BlogPostPage({
     .filter((p) => p.slug !== slug && p.category === post.category)
     .slice(0, 2);
 
+  const blogDir = path.join(process.cwd(), "src", "content", "blog");
+  const rawPostPath = [path.join(blogDir, `${slug}.mdx`), path.join(blogDir, `${slug}.md`)].find((candidate) =>
+    fs.existsSync(candidate)
+  );
+  const rawPostData = rawPostPath
+    ? (matter(fs.readFileSync(rawPostPath, "utf-8")).data as { howto?: BlogHowTo })
+    : {};
+
   // FAQPage JSON-LD — rendered from frontmatter FAQ array
   const faqSchema =
     post.faq.length > 0
@@ -71,6 +104,24 @@ export default async function BlogPostPage({
               "@type": "Answer",
               text: item.answer,
             },
+          })),
+        }
+      : null;
+
+  // HowTo JSON-LD — rendered from frontmatter howto object (tutorial posts only)
+  const howtoData = rawPostData.howto;
+  const howtoSchema =
+    howtoData && howtoData.steps?.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: howtoData.name,
+          description: howtoData.description,
+          step: howtoData.steps.map((s: { name: string; text: string }, i: number) => ({
+            "@type": "HowToStep",
+            position: i + 1,
+            name: s.name,
+            text: s.text,
           })),
         }
       : null;
@@ -117,6 +168,12 @@ export default async function BlogPostPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {howtoSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howtoSchema) }}
         />
       )}
 
@@ -181,25 +238,11 @@ export default async function BlogPostPage({
 
         {/* Article Body — MDXRemote compiles MDX on server */}
         <div className="prose prose-gray max-w-none prose-headings:font-bold prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-img:shadow-md prose-h2:text-2xl prose-h3:text-xl prose-table:text-sm">
-          <MDXRemote source={post.content} />
+          <MDXRemote source={post.content} components={mdxComponents} />
         </div>
 
-        {/* CTA Box */}
-        <div className="mt-16 rounded-2xl border bg-primary/5 p-8 md:p-10 text-center">
-          <h3 className="text-xl font-bold text-foreground mb-2">
-            Ready to white-label your AI automations?
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-            Connect your Vapi, Retell, Make, or n8n workflows and deliver
-            branded client portals in 60 seconds.
-          </p>
-          <Link
-            href="https://app.getflowetic.com/signup"
-            className="inline-flex items-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
-          >
-            Start Free — No Card Required
-          </Link>
-        </div>
+        {/* Clean divider before related posts */}
+        <div className="mt-16 mb-16 border-t" />
 
         {/* Related Posts */}
         {related.length > 0 && (
