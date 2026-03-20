@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { useRef } from 'react';
 
 const floatingLogos = [
-  { name: 'Vapi', position: 'top-32 left-[10%]', delay: 0 },
-  { name: 'Retell AI', position: 'top-24 right-[10%]', delay: 0.2 },
-  { name: 'Make', position: 'top-72 left-[5%]', delay: 0.4 },
-  { name: 'n8n', position: 'top-64 right-[8%]', delay: 0.6 },
+  { name: 'Vapi', position: 'top-32 left-[10%]', delay: 0, logo: '/assets/logos/vapi.svg' },
+  { name: 'Retell AI', position: 'top-24 right-[10%]', delay: 0.2, logo: '/assets/logos/retell.svg' },
+  { name: 'Make', position: 'top-72 left-[5%]', delay: 0.4, logo: '/assets/logos/make.svg' },
+  { name: 'n8n', position: 'top-64 right-[8%]', delay: 0.6, logo: '/assets/logos/n8n.svg' },
 ];
 
 export const HeroSection = () => {
@@ -48,8 +48,9 @@ export const HeroSection = () => {
               delay: item.delay,
               ease: 'easeInOut',
             }}
-            className="bg-card px-4 py-3 rounded-2xl shadow-xl border"
+            className="bg-card px-4 py-3 rounded-2xl shadow-xl border flex items-center gap-2.5"
           >
+            <img src={item.logo} alt={item.name} className="w-6 h-6 object-contain" />
             <span className="text-sm font-semibold text-foreground">{item.name}</span>
           </motion.div>
         </motion.div>
