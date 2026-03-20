@@ -89,7 +89,7 @@ export const FooterSection = () => {
             </p>
             <Link href="https://app.getflowetic.com/signup">
               <Button size="lg" variant="secondary" className="rounded-full px-8">
-                Start Free Trial
+                Get Started — No Card Required
               </Button>
             </Link>
           </motion.div>

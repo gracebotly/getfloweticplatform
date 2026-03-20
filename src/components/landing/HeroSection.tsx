@@ -64,25 +64,9 @@ export const HeroSection = () => {
           className="flex justify-center mb-6"
         >
           <div className="flex items-center gap-2 bg-secondary rounded-full px-4 py-2">
-            <div className="flex -space-x-2">
-              <img 
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-            </div>
+            <div className="w-2 h-2 rounded-full bg-emerald-500" />
             <span className="text-sm font-medium text-foreground">
-              Trusted by 10+ AI automation agencies
+              Built for Agencies Selling AI Services
             </span>
           </div>
         </motion.div>
