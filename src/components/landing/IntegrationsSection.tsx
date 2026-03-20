@@ -58,7 +58,7 @@ export const IntegrationsSection = () => {
                 Getflowetic connects to the four platforms AI agencies use most. Your existing agents and workflows become client-ready products — nothing needs to be rebuilt.
               </p>
               <Link href="https://app.getflowetic.com/signup">
-                <Button className="rounded-full">Start Free Trial</Button>
+                <Button className="rounded-full">Get Started</Button>
               </Link>
               <p className="mt-4 text-sm text-muted-foreground">
                 More integrations coming soon — Voiceflow, AgentOps, and more.

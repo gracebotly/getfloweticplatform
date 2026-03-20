@@ -67,7 +67,7 @@ export const LandingNavbar = () => {
             </Link>
             <Link href="https://app.getflowetic.com/signup">
               <Button size="sm" className="rounded-full px-6">
-                Try for Free
+                Get Started
               </Button>
             </Link>
           </div>
@@ -108,7 +108,7 @@ export const LandingNavbar = () => {
                 </Button>
               </Link>
               <Link href="https://app.getflowetic.com/signup">
-                <Button className="w-full rounded-full">Try for Free</Button>
+                <Button className="w-full rounded-full">Get Started</Button>
               </Link>
             </div>
           </nav>

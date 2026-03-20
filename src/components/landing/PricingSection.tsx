@@ -79,7 +79,7 @@ export const PricingSection = () => {
               </div>
               <Link href="https://app.getflowetic.com/signup" className="block mt-4">
                 <Button variant="outline" className="w-full rounded-full" size="lg">
-                  Free →
+                  Get Started
                 </Button>
               </Link>
               <p className="text-xs text-muted-foreground text-center mt-2">
@@ -116,7 +116,7 @@ export const PricingSection = () => {
               </div>
               <Link href="https://app.getflowetic.com/signup" className="block mt-4">
                 <Button variant="secondary" className="w-full rounded-full" size="lg">
-                  Free →
+                  Get Started
                 </Button>
               </Link>
               <p className="text-xs text-primary-foreground/60 text-center mt-2">

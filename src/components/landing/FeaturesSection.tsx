@@ -7,8 +7,8 @@ import { Globe, Plug, CreditCard, BarChart3 } from 'lucide-react';
 const features = [
   {
     icon: Globe,
-    iconBg: 'bg-violet-500',
-    cardBg: 'bg-violet-50 dark:bg-violet-950/40',
+    iconBg: 'bg-blue-500',
+    cardBg: 'bg-blue-50 dark:bg-blue-950/40',
     title: 'Your brand. Their portal.',
     description:
       'Upload your logo, set your domain, pick your colors. Every client portal looks like you built it from scratch — Getflowetic is completely invisible.',

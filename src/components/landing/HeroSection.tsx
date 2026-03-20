@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { useRef } from 'react';
 
 const floatingLogos = [
-  { name: 'Vapi', position: 'top-32 left-[10%]', delay: 0 },
-  { name: 'Retell AI', position: 'top-24 right-[10%]', delay: 0.2 },
-  { name: 'Make', position: 'top-72 left-[5%]', delay: 0.4 },
-  { name: 'n8n', position: 'top-64 right-[8%]', delay: 0.6 },
+  { name: 'Vapi', position: 'top-32 left-[10%]', delay: 0, logo: '/assets/logos/vapi.svg' },
+  { name: 'Retell AI', position: 'top-24 right-[10%]', delay: 0.2, logo: '/assets/logos/retell.svg' },
+  { name: 'Make', position: 'top-72 left-[5%]', delay: 0.4, logo: '/assets/logos/make.svg' },
+  { name: 'n8n', position: 'top-64 right-[8%]', delay: 0.6, logo: '/assets/logos/n8n.svg' },
 ];
 
 export const HeroSection = () => {
@@ -48,8 +48,9 @@ export const HeroSection = () => {
               delay: item.delay,
               ease: 'easeInOut',
             }}
-            className="bg-card px-4 py-3 rounded-2xl shadow-xl border"
+            className="bg-card px-4 py-3 rounded-2xl shadow-xl border flex items-center gap-2.5"
           >
+            <img src={item.logo} alt={item.name} className="w-6 h-6 object-contain" />
             <span className="text-sm font-semibold text-foreground">{item.name}</span>
           </motion.div>
         </motion.div>
@@ -64,25 +65,9 @@ export const HeroSection = () => {
           className="flex justify-center mb-6"
         >
           <div className="flex items-center gap-2 bg-secondary rounded-full px-4 py-2">
-            <div className="flex -space-x-2">
-              <img 
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
-                alt="User" 
-                className="w-6 h-6 rounded-full border-2 border-background object-cover"
-              />
-            </div>
+            <div className="w-2 h-2 rounded-full bg-emerald-500" />
             <span className="text-sm font-medium text-foreground">
-              Trusted by 10+ AI automation agencies
+              Built for Agencies Selling AI Services
             </span>
           </div>
         </motion.div>
