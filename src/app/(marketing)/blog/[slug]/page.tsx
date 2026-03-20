@@ -177,18 +177,6 @@ export default async function BlogPostPage({
         />
       )}
 
-      {/* Hero Image */}
-      {post.ogImage && (
-        <div className="w-full overflow-hidden" style={{ maxHeight: 420 }}>
-          <img
-            src={post.ogImage}
-            alt={post.title}
-            className="w-full object-cover"
-            style={{ maxHeight: 420 }}
-          />
-        </div>
-      )}
-
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
         {/* Back */}
         <Link
@@ -197,6 +185,17 @@ export default async function BlogPostPage({
         >
           <ArrowLeft size={14} /> Back to Blog
         </Link>
+
+        {/* Hero Image — inside content column, natural aspect ratio */}
+        {post.ogImage && (
+          <div className="mb-10 -mx-4 sm:-mx-6 md:-mx-12 lg:-mx-20">
+            <img
+              src={post.ogImage}
+              alt={post.title}
+              className="w-full h-auto rounded-2xl shadow-sm"
+            />
+          </div>
+        )}
 
         {/* Category + Read Time */}
         <div className="flex items-center gap-3 mb-4">
