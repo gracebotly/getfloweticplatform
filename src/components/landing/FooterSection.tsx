@@ -99,11 +99,12 @@ export const FooterSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
           {/* Logo */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">F</span>
-              </div>
-              <span className="text-xl font-semibold">Getflowetic</span>
+            <Link href="/" className="flex items-center mb-4">
+              <img
+                src="/assets/logo-white.svg"
+                alt="Getflowetic"
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="text-background/60 text-sm">
               White-label AI services for automation agencies
