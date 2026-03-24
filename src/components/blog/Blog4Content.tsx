@@ -50,14 +50,14 @@ export function Blog4Content() {
       {/* ── LEAD ── */}
       {p(<>Vapi doesn&apos;t offer a native white-label client dashboard. If you&apos;re running a voice AI agency on Vapi and want to show clients their call data under your brand, you need a portal layer on top. That&apos;s what a <strong>Vapi white label dashboard</strong> solves.</>, { fontSize: "1.05rem" })}
       {p("Right now, your options are: give clients access to your Vapi account (bad idea), send them screenshots of call logs (not scalable), or build something custom (expensive and slow). None of those let you charge a professional monthly fee for portal access.")}
-      {p(<>The good news is the market has matured fast. In early 2025, Vapify was basically the only game in town. In 2026, there are at least eight platforms competing to solve this problem, from $15/month wrappers to $1,400/month agency suites. This guide covers all of them honestly, the setup process, and the math on turning Vapi into recurring revenue.</>)}
+      {p("The good news is the market has options now. There are at least six platforms that solve this problem at different price points and with different strengths. This guide covers all of them honestly, shows you the setup process, and breaks down the math on turning Vapi into recurring revenue.")}
 
       {/* ── SECTION 1 ── */}
       {h2("can-you-white-label", "Can you white label Vapi?")}
       {p("Not directly. Vapi is an API platform built for developers. It handles the voice AI infrastructure, call routing, and speech processing. It does this really well. But it was never designed to be a client-facing product.")}
       {p("Here's what that means in practice. Vapi's dashboard shows API keys, webhook configs, assistant JSON, and raw call logs. You can't hand that to a dental practice owner and say \"here's your portal.\" They'd close the tab in five seconds.")}
       {p("Vapi does have an enterprise tier for companies that want custom deployments with HIPAA compliance and higher concurrency. But that's a sales conversation starting well above what most small agencies can justify.")}
-      {p("A Vapi staff member put it plainly in their own community forum: \"You will need to build your own UI and connect Vapi with the backend.\" They then recommended third-party platforms like ChatDash and TIXAE Agents. So even Vapi's team acknowledges you need something else for client-facing portals.")}
+      {p("A Vapi staff member put it plainly in their own community forum: \"You will need to build your own UI and connect Vapi with the backend.\" They then pointed people to third-party platforms like ChatDash and TIXAE Agents (now Convocore). So even Vapi's team acknowledges you need something else for client-facing portals.")}
       {p(<>The practical answer for most agencies: keep Vapi as your voice AI engine, and add a branded dashboard layer on top that translates raw API data into something clients understand. If you also run <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n workflows</Link> or <Link href="/blog/make-com-white-label-pricing-automation-agencies" style={{ color: accent }}>Make automations</Link>, some platforms can display all of it in one view.</>)}
 
       {/* ── SECTION 2 ── */}
@@ -88,27 +88,22 @@ export function Blog4Content() {
 
       {p("That separation is everything. The client sees value. You keep your margin. And nobody's Googling your vendor to cut you out of the deal.")}
 
-      {/* ── SECTION 3 — SETUP STEPS ── */}
+      {/* ── SECTION 3 — VIDEO SETUP WALKTHROUGH ── */}
       {h2("setup-steps", "How do you set up a branded Vapi client portal?")}
-      {p(<>The setup process is roughly similar across platforms. I&apos;ll use <Link href="https://app.getflowetic.com/auth" style={{ color: accent }}>Getflowetic</Link> as the example since it covers voice and workflow stacks together, but the general flow applies to Vapify, VoiceAIWrapper, and others too.</>)}
+      {p("I recorded a full walkthrough showing the exact process. This covers connecting your Vapi account, setting your branding, creating a client portal, configuring Stripe billing with per-minute markup, and sending the client their login link.")}
 
-      {[
-        { step: 1, title: "Connect your Vapi account using your API key", body: "Paste your Vapi API key into the setup wizard. It pulls your assistants, phone numbers, and call data automatically. Most platforms sync within seconds. No webhooks to configure manually." },
-        { step: 2, title: "Set your agency branding", body: "Upload your logo, pick your brand colors, and set your portal name. Some platforms like VoiceAIWrapper and Voicerr also let you connect a custom domain. The client should see your agency identity everywhere. Not Vapi's. Not the platform's. Yours." },
-        { step: 3, title: "Create a client portal", body: "Select which Vapi assistant (or assistants) to expose. Choose which metrics appear on the dashboard. Some agencies show everything. Others keep it simple with just call volume, success rate, and estimated ROI. The less noise, the more the client focuses on the value." },
-        { step: 4, title: "Set Stripe billing and per-minute markup", body: "Connect your Stripe account. Set your monthly portal fee and your per-minute markup. If Vapi charges you $0.10 per minute, you might bill your client $0.22 per minute. Most platforms handle invoicing and payment collection automatically." },
-        { step: 5, title: "Send the client their login URL", body: "Generate a secure login link for your client. They click it, see a branded dashboard, and start tracking their voice agent's performance. Some platforms offer magic links (no password needed), others use standard email/password auth." },
-      ].map(({ step, title, body }) => (
-        <div key={step} style={{ display: "flex", gap: "1rem", margin: "1.5rem 0", alignItems: "flex-start" }}>
-          <div style={{ ...sans, width: 32, height: 32, borderRadius: "50%", background: accent, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "0.85rem", flexShrink: 0 }}>{step}</div>
-          <div style={{ flex: 1 }}>
-            <p style={{ ...sans, fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.3rem", color: textPrimary }}>{title}</p>
-            <p style={{ ...serif, fontSize: "0.93rem", lineHeight: 1.75, color: textSecondary, marginBottom: 0 }}>{body}</p>
-          </div>
-        </div>
-      ))}
+      <div style={{ position: "relative", width: "100%", paddingBottom: "56.25%", margin: "1.5rem 0 2rem", borderRadius: 12, overflow: "hidden", border: `1px solid ${border}` }}>
+        <iframe
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+          src="https://www.youtube.com/embed/l-2JSK8OkQQ?si=E3ztPYDbgosoyL2r"
+          title="How to White Label Vapi AI Voice Agents"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
 
-      {p("The first setup takes a few minutes while you upload branding assets and connect Stripe. After that, adding a new client portal is genuinely fast. Most platforms advertise under 60 seconds for repeat setups, and that's roughly accurate.")}
+      {p("The short version: paste your Vapi API key, upload your logo and brand colors, pick which metrics to show clients, connect Stripe with your markup, and share a login link. The first setup takes a few minutes. After that, adding a new client portal takes under 60 seconds.")}
 
       {/* ── SECTION 4 — BILLING ── */}
       {h2("billing", "How do you bill clients for Vapi usage under your brand?")}
@@ -162,29 +157,25 @@ export function Blog4Content() {
 
       {/* ── SECTION 5 — COMPETITOR COMPARISON ── */}
       {h2("competitors", "How do the Vapi white label options compare?")}
-      {p("The market has gotten crowded fast. In early 2025, Vapify was basically the only Vapi-focused wrapper. By March 2026, there are at least eight serious options, each with different strengths. Here's the honest breakdown.")}
+      {p("There are six real platforms for giving Vapi clients a branded dashboard right now. Each takes a different approach. Here's the honest breakdown with pricing verified directly from each platform's site as of March 2026.")}
 
       <div style={{ overflowX: "auto", margin: "2rem 0", borderRadius: 10, border: `1px solid ${border}` }}>
         <table style={{ width: "100%", borderCollapse: "collapse", ...sans, fontSize: "0.82rem" }}>
           <thead>
             <tr style={{ background: accentLight }}>
-              {["Platform", "Price", "Vapi", "Other Voice", "Make / n8n", "Billing", "Best For"].map(h => (
+              {["Platform", "Starts At", "Vapi Support", "Other Providers", "Make / n8n", "Stripe Billing"].map(h => (
                 <th key={h} style={{ padding: "0.7rem 0.8rem", textAlign: "left", fontWeight: 700, color: accent, fontSize: "0.75rem", textTransform: "uppercase" as const, letterSpacing: "0.04em", borderBottom: `2px solid ${accentBorder}` }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {([
-              ["Getflowetic", "$99/mo", "✓", "Retell", "✓ Both", "Stripe", "Voice + workflow agencies"],
-              ["VoiceAIWrapper", "$29–499/mo", "✓", "Retell, 11Labs, Deepgram, Bolna, Ultravox", "✗", "Stripe", "Multi-provider voice agencies"],
-              ["Vapify", "$28–399/mo", "✓", "✗ Vapi only", "✗", "Stripe", "Vapi-only agencies, low budget"],
-              ["Voicerr", "$199–299/mo", "✓", "Retell", "✗", "Stripe", "Outbound campaigns, batch calling"],
-              ["ChatDash", "$15–50/mo", "✓", "Retell, Voiceflow, Botpress", "✗", "Stripe", "Budget voice-only analytics"],
-              ["TIXAE Agents", "$24–124/mo", "✓", "Voiceflow", "✗", "Custom", "Multi-channel (WhatsApp, Discord)"],
-              ["Convocore", "$220/mo", "✗ Own infra", "Own infra", "✗", "Built-in", "Voice + chat + social, multi-channel"],
-              ["Synthflow", "$899–1,400/mo", "✗ Own infra", "Own infra", "✗", "Stripe", "No-code agent builder + reselling"],
-              ["Trillet", "$99–299/mo", "✗ Own infra", "Own infra", "✗", "Built-in", "Native voice platform, low per-min cost"],
-              ["Custom build", "$10K–80K+", "DIY", "DIY", "DIY", "DIY", "50+ clients, unique requirements"],
+              ["Getflowetic", "$99/mo", "✓", "Retell", "✓ Both", "✓"],
+              ["Voicerr", "$28/mo", "✓", "Retell", "✗", "✓"],
+              ["Vapify", "$29/mo", "✓", "Retell (new)", "✗", "✓"],
+              ["VoiceAIWrapper", "$29/mo", "✓", "Retell, ElevenLabs, Deepgram, Bolna, Ultravox", "✗", "✓"],
+              ["ChatDash", "$120/mo", "✓", "Retell, Voiceflow, Botpress", "✗", "✓"],
+              ["Convocore", "$20/mo + $200 WL", "Own infra", "Own infra + multi-channel", "✗", "Built-in"],
             ] as const).map((row, i) => (
               <tr key={i}>
                 {row.map((cell, j) => (
@@ -200,25 +191,21 @@ export function Blog4Content() {
         </table>
       </div>
 
-      {p("That's a lot of options. Let me cut through it with honest takes on each.")}
+      {p("Let me be honest about each one.")}
 
-      {p(<><strong>Vapify</strong> ($28–$399/mo) is the original Vapi wrapper and still the cheapest way to get started. It&apos;s listed as an official integration partner on Vapi&apos;s own docs page. Setup is fast, Stripe rebilling works, and it includes batch calling on higher tiers. The limitation: Vapi only. If you ever add Retell, ElevenLabs, or workflow tools, you&apos;ll need a second platform.</>, {})}
+      {p(<><strong>Voicerr</strong> ($28/mo) is one of the cheapest entry points with a surprisingly complete feature set. It includes unlimited clients, unlimited assistants, unlimited white-label websites, a workflow builder, outbound batch calling campaigns, a lead finder, and Stripe billing with usage-based auto-rebilling. It supports both Vapi and Retell. At $28/month for all of that, the value-to-price ratio is hard to beat if you&apos;re voice-only.</>, {})}
 
-      {p(<><strong>VoiceAIWrapper</strong> ($29–$499/mo) has grown into the most feature-complete voice-only wrapper. It supports six providers now: Vapi, Retell, ElevenLabs, Deepgram, Bolna, and Ultravox. Claims 1,000+ agencies and SOC 2 Type II compliance. If your agency runs multiple voice providers, this is the strongest multi-provider option. But like Vapify, it&apos;s voice-only. No <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n</Link> or <Link href="/blog/make-com-white-label-pricing-automation-agencies" style={{ color: accent }}>Make</Link> support.</>, {})}
+      {p(<><strong>Vapify</strong> ($29/mo Starter, $69 Business, $149 Scale, $399 Enterprise) is the original Vapi wrapper and an official Vapi integration partner listed on Vapi&apos;s own docs. The Starter plan gets you one sub-account with full white-label and Stripe rebilling. The Business plan at $69/month adds five sub-accounts and batch calling. Good for agencies that want human support included, as every paid plan comes with expert calls. Recently added Retell support too.</>, {})}
 
-      {p(<><strong>Voicerr</strong> ($199–$299/mo) used to be the budget pick at $28/month. That era is over. Pricing jumped 7-10x in 2025. The trade-off: you get batch calling campaigns, a lead finder, an automation lab, and a built-in landing page builder. If outbound calling campaigns are your core service, Voicerr has tools the others don&apos;t. If you just need a client analytics portal, it&apos;s overkill at the new price.</>, {})}
+      {p(<><strong>VoiceAIWrapper</strong> ($29/mo Starter, $79 Growth, $249 Scale, $499 Pro) has grown into the most multi-provider option. It supports six voice providers: Vapi, Retell, ElevenLabs, Deepgram, Bolna, and Ultravox. Claims 1,000+ agencies and SOC 2 Type II compliance. If your agency runs multiple voice providers and you want everything under one dashboard, this is the strongest pick. Unlimited client portals start at the $249/month Scale plan. But like the others above, it&apos;s voice-only. No <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n</Link> or <Link href="/blog/make-com-white-label-pricing-automation-agencies" style={{ color: accent }}>Make</Link> support.</>, {})}
 
-      {p(<><strong>ChatDash</strong> ($15–$50/mo) is the cheapest entry point. It&apos;s listed on Vapi&apos;s official integrations page and covers basic call logs, analytics, and Stripe billing. Some agency owners in Skool communities have mentioned limitations as they scale, but for a first client portal on a tight budget, it works. Also supports Retell, Voiceflow, and Botpress.</>, {})}
+      {p(<><strong>ChatDash</strong> (starts at $120/mo) is listed on Vapi&apos;s official integrations page and covers call logs, analytics, knowledge base management, and Stripe billing. It also supports Retell, Voiceflow, and Botpress. The white-label includes custom domains and branding. More expensive than the wrappers above, but offers a broader integration set across chatbot and voice platforms. HIPAA compliance is available as a $200/month add-on.</>, {})}
 
-      {p(<><strong>TIXAE Agents</strong> ($24–$124/mo) is interesting because Vapi&apos;s own staff recommended it in their community forum. It&apos;s not just a dashboard layer. It&apos;s an agent builder that integrates with Vapi and Voiceflow, plus it deploys across WhatsApp, Discord, Instagram, and web chat. If multi-channel deployment matters to your clients, this is worth looking at.</>, {})}
-
-      {p(<><strong>Convocore</strong> ($220/mo) takes a completely different approach. It doesn&apos;t wrap Vapi. It replaces it. Convocore owns its own voice infrastructure ($0.07/min all-in) and adds chat, WhatsApp, Instagram, Messenger, and Telegram from a single platform. Full white-label with custom domains. The catch: you&apos;re leaving Vapi behind. If you&apos;re committed to Vapi&apos;s specific voice engine, Convocore isn&apos;t the move. If you&apos;re open to switching, the multi-channel angle is strong.</>, {})}
-
-      {p(<><strong>Synthflow</strong> ($899–$1,400/mo for agency) is the enterprise option for agencies that want to build and resell voice agents through a no-code builder with GoHighLevel integration. The white-label works, but some agencies have reported branding leaks (Synthflow name appearing in support tickets, email notifications, and call whispers). At that price point, those issues sting. Worth it if you need the no-code builder. Expensive if you already built your agents on Vapi.</>, {})}
-
-      {p(<><strong>Trillet</strong> ($99–$299/mo) is a newer native platform that owns its voice stack and claims $0.09/min all-in. The agency plan includes unlimited sub-accounts and white-label. They&apos;re aggressively publishing pricing comparison content. Still early, but the economics are interesting if you&apos;re evaluating alternatives to Vapi itself.</>, {})}
+      {p(<><strong>Convocore</strong> (formerly TIXAE Agents, $20/mo base + $200/mo white-label add-on) takes a different approach. It&apos;s not a Vapi wrapper. It uses its own voice infrastructure and adds multi-channel support including WhatsApp, Instagram, Messenger, and Telegram. Pricing is credits-based. Vapi staff originally recommended the TIXAE Agents version of this product in their forum, but since rebranding to Convocore, it positions itself more as a Vapi alternative than a complement. Worth looking at if you&apos;re open to using a different voice engine and want multi-channel in one platform.</>, {})}
 
       {p(<><strong>Getflowetic</strong> ($99/mo) is the only option that covers Vapi and Retell alongside Make and n8n in one branded portal. If your agency stack spans voice and workflows, or if you plan to expand beyond voice-only, this is the gap it fills. <Link href="https://app.getflowetic.com/auth" style={{ color: accent }}>Free trial here</Link>, no card needed.</>, {})}
+
+      {p(<>If you&apos;re considering leaving Vapi entirely for better per-minute economics, platforms like Trillet ($99–$299/mo, $0.09/min all-in) and Synthflow (now pay-as-you-go with enterprise white-label) own their own voice stacks. Lower per-minute costs, but you&apos;re rebuilding on a different platform. That&apos;s a separate decision from adding a dashboard to your existing Vapi setup.</>, {})}
 
       {/* ── SECTION 6 — PRICING ── */}
       {h2("pricing", "What does Vapi white label pricing look like for agencies?")}
@@ -227,25 +214,24 @@ export function Blog4Content() {
       {p(<><strong>What Vapi charges (your cost):</strong></>, {})}
       {p("Vapi's pricing is usage-based. The headline rate is $0.05/minute for orchestration. But that's just the platform fee. You also pay separately for your LLM (like GPT-4o at roughly $0.06–$0.10/min), speech-to-text, text-to-speech, and telephony. In production, most agencies land between $0.13 and $0.33 per minute total. Vapi gives you $10 in free credits to start.")}
 
-      {p(<><strong>What the dashboard layer costs (range by platform):</strong></>, {})}
+      {p(<><strong>What the dashboard layer costs (verified March 2026):</strong></>, {})}
       <div style={{ overflowX: "auto", margin: "1rem 0 1.5rem", borderRadius: 10, border: `1px solid ${border}` }}>
         <table style={{ width: "100%", borderCollapse: "collapse", ...sans, fontSize: "0.84rem" }}>
           <thead>
             <tr style={{ background: accentLight }}>
-              {["Platform", "Monthly Cost", "Clients Included", "Key Limitation"].map(h => (
+              {["Platform", "Entry Price", "Unlimited Clients At", "Key Strength"].map(h => (
                 <th key={h} style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 700, color: accent, fontSize: "0.78rem", textTransform: "uppercase" as const, letterSpacing: "0.04em", borderBottom: `2px solid ${accentBorder}` }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {([
-              ["ChatDash", "$15–$50/mo", "Varies by plan", "Basic analytics only"],
-              ["TIXAE Agents", "$24–$124/mo", "Varies by plan", "Agent builder, not pure dashboard"],
-              ["Vapify", "$28–$399/mo", "Unlimited on higher tiers", "Vapi-only, no other providers"],
-              ["VoiceAIWrapper", "$29–$499/mo", "Unlimited on $249+ plans", "Voice-only, no workflow support"],
-              ["Getflowetic", "$99/mo", "Unlimited", "Newer platform"],
-              ["Voicerr", "$199–$299/mo", "Up to 1,000", "Price jumped 7-10x in 2025"],
-              ["Synthflow", "$899–$1,400/mo", "Unlimited sub-accounts", "Includes agent builder (may be overkill)"],
+              ["Voicerr", "$28/mo", "$28/mo (all plans)", "Most features per dollar"],
+              ["Vapify", "$29/mo", "$399/mo (Enterprise)", "Official Vapi partner, expert support"],
+              ["VoiceAIWrapper", "$29/mo", "$249/mo (Scale)", "6 voice providers in one dashboard"],
+              ["Getflowetic", "$99/mo", "$99/mo", "Voice + workflow (Make, n8n) in one portal"],
+              ["ChatDash", "$120/mo", "Varies by plan", "Broad chatbot platform support"],
+              ["Convocore", "$220/mo total", "$220/mo + $15/extra client", "Multi-channel (voice + chat + social)"],
             ] as const).map((row, i) => (
               <tr key={i}>
                 {row.map((cell, j) => (
@@ -257,19 +243,17 @@ export function Blog4Content() {
         </table>
       </div>
 
-      {p("The important number isn't what the dashboard costs you. It's what you charge clients on top of it. A $99/month platform pays for itself the moment one client pays $199/month for portal access. Everything after that is margin.")}
-      {p("One more pricing detail worth knowing: the wrapper platforms (Vapify, VoiceAIWrapper, Voicerr) charge a flat monthly fee and you pay Vapi directly for minutes. The native platforms (Convocore, Synthflow, Trillet) include their own voice infrastructure in the per-minute rate. Different economics, different risk profiles. Wrappers give you more control over the voice stack. Native platforms give you one invoice.")}
+      {p("The important number isn't what the dashboard costs you. It's what you charge clients on top of it. A $28/month Voicerr account pays for itself the moment one client pays $149/month for portal access. Everything after that is margin.")}
 
       {/* ── SECTION 7 — DECISION FRAMEWORK ── */}
       {h2("decision", "Quick decision framework")}
-      {p("There are too many options. Here's how to narrow it down fast.")}
+      {p("Too many options? Here's how to narrow it down fast.")}
 
       {[
-        ["Are you Vapi-only and testing the model with your first few clients?", "Start with ChatDash ($15/mo) or Vapify ($28/mo). Validate that clients will pay for portal access before you invest more. Either one gets you a working branded dashboard in under an hour."],
-        ["Do you run Vapi alongside Make, n8n, or Retell?", "Getflowetic is the only platform that covers voice and workflow analytics in one branded portal. That matters when clients want one dashboard for everything, not separate logins for voice and automation."],
+        ["Are you Vapi-only and testing the model with your first few clients?", "Start with Voicerr ($28/mo) or Vapify ($29/mo). Both get you a working white-label portal with Stripe billing for under $30. Validate that clients will pay for dashboard access before you invest more."],
+        ["Do you run Vapi alongside Make, n8n, or Retell?", "Getflowetic is the only platform that covers voice and workflow analytics in one branded portal. That matters when clients want one dashboard for everything, not separate logins."],
         ["Do you use multiple voice providers (Vapi + Retell + ElevenLabs)?", "VoiceAIWrapper supports six providers from one dashboard. If provider flexibility is your edge, this is the strongest multi-provider option at $29/month to start."],
-        ["Do you need outbound campaigns, batch calling, and lead tools?", "Voicerr ($199/mo) or Synthflow ($899+/mo) include campaign management that goes well beyond analytics. If outbound calling is your primary service, those extras earn their keep."],
-        ["Are you open to leaving Vapi entirely for better margins?", "Convocore ($220/mo with $0.07/min all-in) or Trillet ($99/mo with $0.09/min) own their voice infrastructure. Lower per-minute costs and multi-channel support. The trade-off: you're rebuilding on a different platform."],
+        ["Do your clients need chat, WhatsApp, Instagram, and voice together?", "Convocore covers all channels from one platform. But you're leaving Vapi behind and using their own voice infrastructure instead. Different engine, same agency model."],
       ].map(([q, a]) => (
         p(<><strong>{q}</strong> {a}</>, {})
       ))}
@@ -278,9 +262,9 @@ export function Blog4Content() {
       {h2("faq", "Vapi white label dashboard FAQ")}
       <div style={{ marginTop: "1rem" }}>
         {[
-          ["Can you white label Vapi?", "Vapi doesn't offer a white-label version of its dashboard for agencies. You can connect Vapi's API to a white-label portal platform like Getflowetic, VoiceAIWrapper, Vapify, ChatDash, or TIXAE Agents. The client sees your brand. Vapi's own staff has acknowledged this gap and recommends third-party solutions in their community forum."],
+          ["Can you white label Vapi?", "Vapi doesn't offer a white-label version of its dashboard for agencies. You connect Vapi's API to a white-label portal platform like Getflowetic, VoiceAIWrapper, Vapify, Voicerr, or ChatDash. The client sees your brand. Vapi's own staff has acknowledged this gap and points to third-party solutions in their community forum."],
           ["What is a Vapi white label dashboard?", "It's a branded client portal showing your AI voice agent results under your agency's brand. The dashboard displays call volume, success rates, cost per call, and transcripts. Your client logs in and sees their data, your logo, your colors. No Vapi branding is visible anywhere."],
-          ["How do agencies charge for Vapi voice agent services?", "Most charge $500 to $3,000 per month depending on call volume and complexity. The typical model combines a monthly portal fee ($99 to $299) with a per-minute markup. Vapi's real production cost is $0.13 to $0.33 per minute (not just the $0.05 headline). Agencies bill clients $0.25 to $0.50 per minute and keep the margin."],
+          ["How do agencies charge for Vapi voice agent services?", "Most charge $500 to $3,000 per month depending on call volume and complexity. The typical model combines a monthly portal fee ($99 to $299) with a per-minute markup. Vapi's real production cost is $0.13 to $0.33 per minute (not the $0.05 headline). Agencies bill clients $0.25 to $0.50 per minute and keep the margin."],
           ["How long does it take to set up a white-label Vapi client portal?", "Under 60 seconds for repeat setups on most platforms once your Vapi API key is connected. First-time setup with branding and Stripe takes 10 to 30 minutes depending on the platform. A custom build takes weeks to months and costs $10,000 or more."],
           ["What metrics should I show clients in a Vapi dashboard?", "Call volume, success rate, average call duration, cost per call vs. human alternative, and searchable transcripts. The most effective portals translate raw data into ROI. Instead of showing 847 calls, show '847 calls handled, saving an estimated $12,400 in staff costs.'"],
           ["Do I need to give clients access to my Vapi account?", "No, and you shouldn't. Giving clients your Vapi login exposes your API keys, assistant configurations, and per-minute costs. A dashboard layer shows them only what they need to see. This also prevents clients from Googling your vendor and trying to cut you out."],
@@ -296,7 +280,7 @@ export function Blog4Content() {
 
       {/* ── CLOSING ── */}
       {p("Vapi is a great voice AI engine. Possibly the best one for agencies that want low-level control over their voice stack. But it wasn't built to be the thing your client logs into. That gap is where agencies lose clients, leave money on the table, and struggle to justify monthly fees.")}
-      {p("The market now has real options at every price point, from $15/month to $1,400/month. Pick the one that matches your stack, validate with one paying client, and scale from there. The agencies making recurring revenue from voice AI in 2026 aren't the ones with the fanciest agents. They're the ones who made the work visible.")}
+      {p("A branded portal closes that gap. Pick the one that matches your stack, validate with one paying client, and scale from there. The agencies making recurring revenue from voice AI in 2026 aren't the ones with the fanciest agents. They're the ones who made the work visible.")}
       {p(<>If you want to skip the custom build and start charging clients this week, <Link href="https://app.getflowetic.com/auth" style={{ color: accent, textDecoration: "underline", textUnderlineOffset: "3px" }}>Getflowetic has a free trial</Link>, no card required.</>)}
 
     </div>
