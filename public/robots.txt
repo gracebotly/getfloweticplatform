@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /app/
 
-Sitemap: https://getflowetic.com/sitemap.xml
+Sitemap: https://www.getflowetic.com/sitemap.xml
