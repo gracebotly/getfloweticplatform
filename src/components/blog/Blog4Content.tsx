@@ -103,7 +103,7 @@ export function Blog4Content() {
         />
       </div>
 
-      {p("The short version: paste your Vapi API key, upload your logo and brand colors, pick which metrics to show clients, connect Stripe with your markup, and share a login link. The first setup takes a few minutes. After that, adding a new client portal takes under 60 seconds.")}
+
 
       {/* ── SECTION 4 — BILLING ── */}
       {h2("billing", "How do you bill clients for Vapi usage under your brand?")}
