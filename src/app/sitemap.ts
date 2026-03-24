@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.getflowetic.com";
+  const baseUrl = "https://getflowetic.com";
 
   // Static marketing pages
   const staticPages: MetadataRoute.Sitemap = [

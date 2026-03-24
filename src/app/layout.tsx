@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   },
   description:
     "Turn your Vapi, Retell, Make, or n8n automations into branded client portals in 60 seconds. White-label dashboards, Stripe billing, and real-time analytics for AI automation agencies.",
-  metadataBase: new URL("https://www.getflowetic.com"),
+  metadataBase: new URL("https://getflowetic.com"),
   openGraph: {
     type: "website",
     siteName: "Getflowetic",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://www.getflowetic.com",
+    canonical: "https://getflowetic.com",
   },
 };
 
@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: "Getflowetic",
               description:
                 "White-label AI agent portal platform for automation agencies. Connects Vapi, Retell, Make, and n8n workflows and delivers branded client dashboards with Stripe billing in 60 seconds.",
-              url: "https://www.getflowetic.com",
+              url: "https://getflowetic.com",
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
               offers: {

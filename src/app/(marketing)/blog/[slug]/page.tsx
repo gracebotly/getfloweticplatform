@@ -52,7 +52,7 @@ export async function generateMetadata({
     title: post.title,
     description: post.description,
     keywords: post.keywords,
-    alternates: { canonical: `https://www.getflowetic.com/blog/${post.slug}` },
+    alternates: { canonical: `https://getflowetic.com/blog/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.description,
@@ -135,27 +135,27 @@ export default async function BlogPostPage({
     headline: post.title,
     description: post.description,
     image: post.ogImage
-      ? `https://www.getflowetic.com${post.ogImage}`
+      ? `https://getflowetic.com${post.ogImage}`
       : undefined,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     author: {
       "@type": "Organization",
       name: "Getflowetic",
-      url: "https://www.getflowetic.com",
+      url: "https://getflowetic.com",
     },
     publisher: {
       "@type": "Organization",
       name: "Getflowetic",
-      url: "https://www.getflowetic.com",
+      url: "https://getflowetic.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.getflowetic.com/og-image.png",
+        url: "https://getflowetic.com/og-image.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://www.getflowetic.com/blog/${post.slug}`,
+      "@id": `https://getflowetic.com/blog/${post.slug}`,
     },
   };
 
