@@ -11,6 +11,7 @@ import { ProductCallout } from "@/components/blog/ProductCallout";
 import { Blog1Content } from "@/components/blog/Blog1Content";
 import { Blog2Content } from "@/components/blog/Blog2Content";
 import { Blog3Content } from "@/components/blog/Blog3Content";
+import { Blog4Content } from "@/components/blog/Blog4Content";
 
 type BlogHowToStep = {
   name: string;
@@ -28,6 +29,7 @@ const mdxComponents = {
   Blog1Content,
   Blog2Content,
   Blog3Content,
+  Blog4Content,
 };
 
 // SSG — pre-render every post at build time
