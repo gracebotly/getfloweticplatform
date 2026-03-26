@@ -243,7 +243,7 @@ export function Blog4Content() {
         </table>
       </div>
 
-      {p("The important number isn't what the dashboard costs you. It's what you charge clients on top of it. A $28/month Voicerr account pays for itself the moment one client pays $149/month for portal access. Everything after that is margin.")}
+      {p(<>The important number isn&apos;t what the dashboard costs you. It&apos;s what you charge clients on top of it. A $28/month Voicerr account pays for itself the moment one client pays $149/month for portal access. Everything after that is margin. For a side-by-side comparison that includes workflow platforms too, there&apos;s a full breakdown in the <Link href="/blog/best-white-label-ai-dashboard-agencies" style={{ color: accent }}>best white-label AI dashboard guide</Link>.</>)}
 
       {/* ── SECTION 7 — DECISION FRAMEWORK ── */}
       {h2("decision", "Quick decision framework")}

@@ -67,7 +67,7 @@ export function Blog1Content() {
       {p("You build a Vapi voice receptionist that handles 400 calls a month for a dental practice. Your client has no idea. They see a quieter front desk and assume things are slow. They cancel at month three.")}
       {p("You build an n8n workflow that qualifies and enriches leads before they hit the CRM. Your client just sees cleaner data. They think that's normal. They don't renew.")}
       {p("This isn't a product problem. It's a visibility problem. The work is happening. The value is real. But invisible value doesn't survive a budget conversation. A branded portal turns your backend into something your client opens every Monday morning. That's what keeps them paying.")}
-      {p(<>If you're running <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n workflows for clients</Link> or Vapi voice agents, this is the gap you're probably already feeling.</>)}
+      {p(<>If you're running <Link href="/blog/can-you-white-label-n8n-agency-recurring-revenue" style={{ color: accent }}>n8n workflows for clients</Link> or <Link href="/blog/vapi-white-label-dashboard-ai-agencies" style={{ color: accent }}>Vapi voice agents</Link>, this is the gap you're probably already feeling.</>)}
 
       {/* ── SECTION 3 ── */}
       {h2("portal-requirements", "What should a white-label AI client dashboard include?")}
